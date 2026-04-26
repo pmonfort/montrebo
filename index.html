@@ -136,6 +136,7 @@
         <a href="#services"  data-i18n="nav.services"     class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Services</a>
         <a href="#tech"      data-i18n="nav.technologies"  class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Technologies</a>
         <a href="#about"     data-i18n="nav.about"         class="text-sm font-medium text-slate-300 hover:text-white transition-colors">About</a>
+        <a href="#products"  data-i18n="nav.products"      class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Products</a>
         <a href="#contact"   data-i18n="nav.contact"       class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact</a>
 
         <!-- Language Selector -->
@@ -171,6 +172,7 @@
         <a href="#services" data-i18n="nav.services"     class="mobile-link text-base text-slate-300 hover:text-white transition-colors">Services</a>
         <a href="#tech"     data-i18n="nav.technologies"  class="mobile-link text-base text-slate-300 hover:text-white transition-colors">Technologies</a>
         <a href="#about"    data-i18n="nav.about"          class="mobile-link text-base text-slate-300 hover:text-white transition-colors">About</a>
+        <a href="#products" data-i18n="nav.products"       class="mobile-link text-base text-slate-300 hover:text-white transition-colors">Products</a>
         <a href="#contact"  data-i18n="nav.contact"        class="mobile-link text-base text-slate-300 hover:text-white transition-colors">Contact</a>
         <div class="flex gap-2 pt-2 border-t border-white/10 mt-2">
           <button onclick="setLang('en')" class="text-xs text-slate-400 hover:text-white px-2 py-1 rounded hover:bg-white/5">EN</button>
@@ -492,6 +494,43 @@
 
 
   <!-- ================================================================
+       PRODUCTS
+       ================================================================ -->
+  <section id="products" class="py-24 sm:py-32 bg-navy">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+        <p class="reveal text-sm font-semibold tracking-widest uppercase text-emerald mb-4" data-i18n="products.label">Our Products</p>
+        <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-5" data-i18n="products.title">Built by Us, Used by Teams Worldwide</h2>
+        <p class="reveal reveal-delay-2 text-lg text-slate-400 leading-relaxed" data-i18n="products.subtitle">Beyond consulting, we build our own products. Real tools born from real engineering challenges.</p>
+      </div>
+
+      <div class="max-w-3xl mx-auto">
+        <a href="https://horusqa.ai" target="_blank" rel="noopener" class="reveal group block glass rounded-2xl p-8 sm:p-10 hover:border-emerald/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald/5">
+          <div class="flex flex-col sm:flex-row items-start gap-6">
+            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald to-emerald-dark flex items-center justify-center flex-shrink-0">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-2">
+                <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-emerald transition-colors">HorusQA</h3>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald/10 text-emerald border border-emerald/20" data-i18n="products.horus.badge">SaaS</span>
+              </div>
+              <p class="text-slate-400 leading-relaxed mb-4" data-i18n="products.horus.desc">No-code automated QA testing platform. Record browser interactions with a Chrome extension, replay them with Playwright, and get instant reports with screenshots and video. No coding required.</p>
+              <span class="inline-flex items-center gap-2 text-sm font-semibold text-emerald group-hover:gap-3 transition-all">
+                <span data-i18n="products.horus.cta">Visit horusqa.ai</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
        CONTACT
        ================================================================ -->
   <section id="contact" class="py-24 sm:py-32 bg-surface">
@@ -629,6 +668,7 @@
             <li><a href="#about"    class="text-sm text-slate-500 hover:text-slate-300 transition-colors" data-i18n="nav.about">About</a></li>
             <li><a href="#services" class="text-sm text-slate-500 hover:text-slate-300 transition-colors" data-i18n="nav.services">Services</a></li>
             <li><a href="#tech"     class="text-sm text-slate-500 hover:text-slate-300 transition-colors" data-i18n="nav.technologies">Technologies</a></li>
+            <li><a href="#products" class="text-sm text-slate-500 hover:text-slate-300 transition-colors" data-i18n="nav.products">Products</a></li>
             <li><a href="#contact"  class="text-sm text-slate-500 hover:text-slate-300 transition-colors" data-i18n="nav.contact">Contact</a></li>
           </ul>
         </div>
@@ -684,6 +724,11 @@
       "about.v1.title":"Clean Code, Always","about.v1.desc":"Every line we write is tested, reviewed, and documented. We build systems designed for the engineers who come after us -- because maintainability is not optional, it's foundational.",
       "about.v2.title":"Honest Communication","about.v2.desc":"No vanity metrics, no sugar-coating. We give you direct, technical feedback and transparent timelines. If something won't work, you'll hear it from us first.",
       "about.v3.title":"Long-Term Partnership","about.v3.desc":"We measure success by the value we create over years, not sprints. Most of our clients become long-term partners because we treat their technology as if it were our own.",
+      "nav.products":"Products",
+      "products.label":"Our Products","products.title":"Built by Us, Used by Teams Worldwide",
+      "products.subtitle":"Beyond consulting, we build our own products. Real tools born from real engineering challenges.",
+      "products.horus.badge":"SaaS","products.horus.desc":"No-code automated QA testing platform. Record browser interactions with a Chrome extension, replay them with Playwright, and get instant reports with screenshots and video. No coding required.",
+      "products.horus.cta":"Visit horusqa.ai",
       "contact.label":"Contact","contact.title":"Let's Build Something Together",
       "contact.subtitle":"Tell us about your challenge. We'll respond within 24 hours with an honest assessment of how we can help.",
       "contact.info.title":"Start the Conversation","contact.info.desc":"Whether you need a full engineering team or a second opinion on your architecture, we're here to help. No commitment, no sales pitch -- just a technical conversation about your goals.",
@@ -723,6 +768,11 @@
       "about.v1.title":"Codigo Limpio, Siempre","about.v1.desc":"Cada linea que escribimos esta testeada, revisada y documentada. Construimos sistemas disenados para los ingenieros que vienen despues, porque la mantenibilidad no es opcional, es fundamental.",
       "about.v2.title":"Comunicacion Honesta","about.v2.desc":"Sin metricas de vanidad, sin endulzar la realidad. Te damos feedback tecnico directo y timelines transparentes. Si algo no va a funcionar, lo sabras primero por nosotros.",
       "about.v3.title":"Partnership a Largo Plazo","about.v3.desc":"Medimos el exito por el valor que creamos a lo largo de anos, no sprints. La mayoria de nuestros clientes se convierten en socios a largo plazo porque tratamos su tecnologia como si fuera nuestra.",
+      "nav.products":"Productos",
+      "products.label":"Nuestros Productos","products.title":"Construidos por Nosotros, Usados por Equipos en Todo el Mundo",
+      "products.subtitle":"Mas alla de la consultoria, construimos nuestros propios productos. Herramientas reales nacidas de desafios de ingenieria reales.",
+      "products.horus.badge":"SaaS","products.horus.desc":"Plataforma de testing QA automatizado sin codigo. Graba interacciones del navegador con una extension de Chrome, replicalas con Playwright, y obtene reportes instantaneos con capturas y video. Sin necesidad de programar.",
+      "products.horus.cta":"Visitar horusqa.ai",
       "contact.label":"Contacto","contact.title":"Construyamos Algo Juntos",
       "contact.subtitle":"Cuentanos tu desafio. Responderemos en 24 horas con una evaluacion honesta de como podemos ayudar.",
       "contact.info.title":"Inicia la Conversacion","contact.info.desc":"Ya sea que necesites un equipo completo de ingenieria o una segunda opinion sobre tu arquitectura, estamos aqui para ayudar. Sin compromiso, sin pitch de ventas, solo una conversacion tecnica sobre tus objetivos.",
@@ -762,6 +812,11 @@
       "about.v1.title":"Codigo Limpo, Sempre","about.v1.desc":"Cada linha que escrevemos e testada, revisada e documentada. Construimos sistemas projetados para os engenheiros que vem depois, porque manutenibilidade nao e opcional, e fundamental.",
       "about.v2.title":"Comunicacao Honesta","about.v2.desc":"Sem metricas de vaidade, sem adocar a realidade. Damos feedback tecnico direto e timelines transparentes. Se algo nao vai funcionar, voce sabera primeiro por nos.",
       "about.v3.title":"Parceria de Longo Prazo","about.v3.desc":"Medimos o sucesso pelo valor que criamos ao longo de anos, nao sprints. A maioria dos nossos clientes se tornam parceiros de longo prazo porque tratamos sua tecnologia como se fosse nossa.",
+      "nav.products":"Produtos",
+      "products.label":"Nossos Produtos","products.title":"Construidos por Nos, Usados por Equipes no Mundo Todo",
+      "products.subtitle":"Alem da consultoria, construimos nossos proprios produtos. Ferramentas reais nascidas de desafios de engenharia reais.",
+      "products.horus.badge":"SaaS","products.horus.desc":"Plataforma de testes QA automatizados sem codigo. Grave interacoes do navegador com uma extensao do Chrome, reproduza com Playwright e obtenha relatorios instantaneos com capturas e video. Sem necessidade de programar.",
+      "products.horus.cta":"Visitar horusqa.ai",
       "contact.label":"Contato","contact.title":"Vamos Construir Algo Juntos",
       "contact.subtitle":"Conte-nos seu desafio. Responderemos em 24 horas com uma avaliacao honesta de como podemos ajudar.",
       "contact.info.title":"Inicie a Conversa","contact.info.desc":"Se voce precisa de uma equipe completa de engenharia ou de uma segunda opiniao sobre sua arquitetura, estamos aqui para ajudar. Sem compromisso, sem pitch de vendas, apenas uma conversa tecnica sobre seus objetivos.",
@@ -801,6 +856,11 @@
       "about.v1.title":"Code Propre, Toujours","about.v1.desc":"Chaque ligne que nous ecrivons est testee, revue et documentee. La maintenabilite n'est pas optionnelle, elle est fondamentale.",
       "about.v2.title":"Communication Honnete","about.v2.desc":"Pas de metriques de vanite. Nous vous donnons un feedback technique direct et des delais transparents.",
       "about.v3.title":"Partenariat a Long Terme","about.v3.desc":"Nous mesurons le succes par la valeur que nous creons sur des annees. La plupart de nos clients deviennent des partenaires de long terme.",
+      "nav.products":"Produits",
+      "products.label":"Nos Produits","products.title":"Construits par Nous, Utilises par des Equipes dans le Monde Entier",
+      "products.subtitle":"Au-dela du conseil, nous construisons nos propres produits. De vrais outils nes de vrais defis d'ingenierie.",
+      "products.horus.badge":"SaaS","products.horus.desc":"Plateforme de tests QA automatises sans code. Enregistrez les interactions navigateur avec une extension Chrome, rejouez-les avec Playwright et obtenez des rapports instantanes avec captures et video. Aucune programmation requise.",
+      "products.horus.cta":"Visiter horusqa.ai",
       "contact.label":"Contact","contact.title":"Construisons Quelque Chose Ensemble",
       "contact.subtitle":"Parlez-nous de votre defi. Nous repondrons sous 24 heures avec une evaluation honnete.",
       "contact.info.title":"Demarrez la Conversation","contact.info.desc":"Que vous ayez besoin d'une equipe complete ou d'un deuxieme avis sur votre architecture, nous sommes la. Sans engagement, sans pitch commercial.",
@@ -840,6 +900,11 @@
       "about.v1.title":"Sauberer Code, Immer","about.v1.desc":"Jede Zeile ist getestet, reviewed und dokumentiert. Wartbarkeit ist nicht optional, sondern fundamental.",
       "about.v2.title":"Ehrliche Kommunikation","about.v2.desc":"Keine Vanity-Metriken. Direktes, technisches Feedback und transparente Zeitplaene.",
       "about.v3.title":"Langfristige Partnerschaft","about.v3.desc":"Wir messen Erfolg am Wert ueber Jahre. Die meisten Kunden werden langfristige Partner, weil wir ihre Technologie wie unsere eigene behandeln.",
+      "nav.products":"Produkte",
+      "products.label":"Unsere Produkte","products.title":"Von Uns Gebaut, Weltweit von Teams Genutzt",
+      "products.subtitle":"Ueber die Beratung hinaus bauen wir unsere eigenen Produkte. Echte Tools, geboren aus echten Engineering-Herausforderungen.",
+      "products.horus.badge":"SaaS","products.horus.desc":"No-Code-Plattform fuer automatisierte QA-Tests. Zeichnen Sie Browser-Interaktionen mit einer Chrome-Erweiterung auf, spielen Sie sie mit Playwright ab und erhalten Sie sofortige Berichte mit Screenshots und Video. Keine Programmierung erforderlich.",
+      "products.horus.cta":"horusqa.ai besuchen",
       "contact.label":"Kontakt","contact.title":"Lassen Sie Uns Etwas Gemeinsam Aufbauen",
       "contact.subtitle":"Erzaehlen Sie uns von Ihrer Herausforderung. Wir antworten innerhalb von 24 Stunden.",
       "contact.info.title":"Starten Sie das Gespraech","contact.info.desc":"Ob komplettes Engineering-Team oder zweite Meinung zur Architektur -- wir sind fuer Sie da. Keine Verpflichtung, kein Verkaufspitch.",
