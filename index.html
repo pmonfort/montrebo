@@ -541,7 +541,10 @@
 
         <!-- Form -->
         <div class="lg:col-span-3 reveal reveal-delay-1">
-          <form id="contactForm" class="bg-white rounded-2xl p-8 sm:p-10 border border-border shadow-sm">
+          <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="bg-white rounded-2xl p-8 sm:p-10 border border-border shadow-sm">
+            <input type="hidden" name="access_key" value="44274b3a-b8b2-4d4a-834c-dd93b6a7cbe1">
+            <input type="hidden" name="subject" value="New contact from Montrebo website">
+            <input type="hidden" name="redirect" value="https://montrebo.com">
             <div class="grid sm:grid-cols-2 gap-5 mb-5">
               <div>
                 <label class="block text-sm font-medium text-heading mb-2" data-i18n="contact.form.name">Full Name</label>
@@ -930,12 +933,28 @@
   /* -----------------------------------------------------------------
      Contact form
      ----------------------------------------------------------------- */
-  document.getElementById('contactForm').addEventListener('submit', (e) => {
+  document.getElementById('contactForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const form = e.target;
-    console.log('Form submitted:', Object.fromEntries(new FormData(form)));
-    form.classList.add('hidden');
-    document.getElementById('formSuccess').classList.remove('hidden');
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(form)
+      });
+      if (res.ok) {
+        form.classList.add('hidden');
+        document.getElementById('formSuccess').classList.remove('hidden');
+      } else {
+        btn.textContent = 'Error, try again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Error, try again';
+      btn.disabled = false;
+    }
   });
 
   /* -----------------------------------------------------------------
