@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Montrebo | Enterprise Technology Consulting</title>
   <meta name="description" content="Montrebo delivers expert technology consulting in software development, cloud infrastructure, DevOps, and digital transformation for enterprises worldwide.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -13,21 +14,22 @@
       theme: {
         extend: {
           colors: {
-            navy: '#0A1421',
-            'navy-light': '#0F1D2E',
-            'navy-mid': '#152238',
-            accent: '#3B82F6',
-            'accent-dark': '#2563EB',
-            indigo: '#6366F1',
-            emerald: '#10B981',
-            surface: '#F8FAFC',
-            heading: '#0F172A',
-            body: '#334155',
-            muted: '#64748B',
-            border: '#E2E8F0',
+            navy:        '#0A1421',
+            'navy-light':'#0F1D2E',
+            'navy-mid':  '#152238',
+            accent:      '#3B82F6',
+            'accent-dark':'#2563EB',
+            indigo:      '#6366F1',
+            emerald:     '#10B981',
+            'emerald-dark':'#059669',
+            surface:     '#F8FAFC',
+            heading:     '#0F172A',
+            body:        '#334155',
+            muted:       '#64748B',
+            border:      '#E2E8F0',
           },
           fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            sans: ['Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','sans-serif'],
           },
         },
       },
@@ -39,131 +41,121 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- Favicon (inline SVG as data URI) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%233B82F6'/%3E%3Cstop offset='100%25' stop-color='%236366F1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M32 6L8 48h48L32 6z' fill='url(%23g)' opacity='0.85'/%3E%3Ccircle cx='32' cy='22' r='7' fill='%2310B981'/%3E%3Ccircle cx='39' cy='30' r='7' fill='%2310B981'/%3E%3Ccircle cx='32' cy='38' r='7' fill='%2310B981'/%3E%3Ccircle cx='25' cy='30' r='7' fill='%2310B981'/%3E%3Ccircle cx='32' cy='30' r='3.5' fill='%2310B981'/%3E%3Cpath d='M32 6L8 48h48L32 6z' fill='url(%23g)' opacity='0.15'/%3E%3C/svg%3E">
+
   <style>
     html { scroll-behavior: smooth; }
 
-    /* Scroll-triggered animations */
+    /* ---- Scroll-triggered reveal ---- */
     .reveal {
       opacity: 0;
       transform: translateY(32px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.7s cubic-bezier(0.16,1,0.3,1);
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-delay-1 { transition-delay:.1s }
+    .reveal-delay-2 { transition-delay:.2s }
+    .reveal-delay-3 { transition-delay:.3s }
+    .reveal-delay-4 { transition-delay:.4s }
+    .reveal-delay-5 { transition-delay:.5s }
 
-    /* Hero background pattern */
+    /* ---- Hero grid background ---- */
     .hero-grid {
       background-image:
-        linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(59,130,246,0.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(59,130,246,0.04) 1px,transparent 1px);
       background-size: 64px 64px;
     }
 
-    /* Glassmorphism card */
+    /* ---- Glassmorphism ---- */
     .glass {
-      background: rgba(255,255,255,0.03);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.07);
     }
 
-    /* Gradient text */
+    /* ---- Gradient text ---- */
     .gradient-text {
-      background: linear-gradient(135deg, #3B82F6, #6366F1);
+      background: linear-gradient(135deg,#3B82F6,#6366F1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .gradient-text-emerald {
+      background: linear-gradient(135deg,#10B981,#34D399);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    /* Nav scroll state */
-    .nav-scrolled {
-      background: rgba(10,20,33,0.97) !important;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-    }
+    /* ---- Nav scroll ---- */
+    .nav-scrolled { background:rgba(10,20,33,0.97)!important; box-shadow:0 1px 3px rgba(0,0,0,0.3); }
 
-    /* Language selector */
-    .lang-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      margin-top: 0.5rem;
-      min-width: 160px;
-    }
-    .lang-btn:hover .lang-menu,
-    .lang-menu:hover,
-    .lang-btn:focus-within .lang-menu {
-      display: block;
-    }
+    /* ---- Language dropdown ---- */
+    .lang-menu { display:none; position:absolute; top:100%; right:0; margin-top:.5rem; min-width:160px; }
+    .lang-btn:hover .lang-menu, .lang-menu:hover, .lang-btn:focus-within .lang-menu { display:block; }
 
-    /* Mobile menu */
-    .mobile-menu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease;
+    /* ---- Mobile menu ---- */
+    .mobile-menu { max-height:0; overflow:hidden; transition:max-height .35s ease; }
+    .mobile-menu.open { max-height:420px; }
+
+    /* ---- Service card glow on hover ---- */
+    .service-glow { transition: box-shadow .4s, border-color .3s, transform .3s; }
+    .service-glow:hover { box-shadow: 0 0 40px -8px rgba(59,130,246,0.12); }
+
+    /* ---- Clover float animation ---- */
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%     { transform: translateY(-8px); }
     }
-    .mobile-menu.open {
-      max-height: 400px;
-    }
+    .float { animation: float 6s ease-in-out infinite; }
+    .float-delay { animation: float 6s ease-in-out 2s infinite; }
   </style>
 </head>
 <body class="font-sans text-body antialiased">
 
-  <!-- ============================================================
+
+  <!-- ================================================================
        NAVIGATION
-       ============================================================ -->
+       ================================================================ -->
   <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-navy/80 backdrop-blur-xl border-b border-white/5">
     <div class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-[72px]">
 
-      <!-- Logo -->
-      <a href="#" class="flex items-center gap-0 group">
-        <span class="text-2xl font-extrabold tracking-tight text-white">Montre</span>
-        <span class="text-2xl font-extrabold tracking-tight gradient-text">bo</span>
+      <!-- Logo: Isotype + Wordmark -->
+      <a href="#" class="flex items-center gap-3 group">
+        <img src="logo.png" alt="Montrebo" class="w-9 h-9 flex-shrink-0 transition-transform duration-300 group-hover:scale-105 object-contain">
+        <!-- Wordmark -->
+        <span class="text-[22px] font-extrabold tracking-tight">
+          <span class="text-white">Montre</span><span class="gradient-text">bo</span>
+        </span>
       </a>
 
       <!-- Desktop Nav -->
       <div class="hidden lg:flex items-center gap-8">
-        <a href="#services" data-i18n="nav.services" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors duration-200">Services</a>
-        <a href="#tech" data-i18n="nav.technologies" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors duration-200">Technologies</a>
-        <a href="#about" data-i18n="nav.about" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors duration-200">About</a>
-        <a href="#contact" data-i18n="nav.contact" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors duration-200">Contact</a>
+        <a href="#services"  data-i18n="nav.services"     class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Services</a>
+        <a href="#tech"      data-i18n="nav.technologies"  class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Technologies</a>
+        <a href="#about"     data-i18n="nav.about"         class="text-sm font-medium text-slate-300 hover:text-white transition-colors">About</a>
+        <a href="#contact"   data-i18n="nav.contact"       class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact</a>
 
         <!-- Language Selector -->
         <div class="relative lang-btn">
-          <button class="flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-white transition-colors duration-200 px-2 py-1 rounded-lg hover:bg-white/5" id="langToggle">
+          <button class="flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-white transition-colors px-2 py-1 rounded-lg hover:bg-white/5">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9 9 0 100-18 9 9 0 000 18zm0-18c2.5 3 4 6.5 4 9s-1.5 6-4 9m0-18c-2.5 3-4 6.5-4 9s1.5 6 4 9M3 12h18"/></svg>
             <span id="currentLang">EN</span>
             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="lang-menu bg-navy-light border border-white/10 rounded-xl shadow-2xl py-2 z-50">
-            <button onclick="setLang('en')" class="lang-option w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 flex items-center gap-3 transition-colors">
-              <span class="text-base">EN</span><span class="text-slate-500">English</span>
-            </button>
-            <button onclick="setLang('es')" class="lang-option w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 flex items-center gap-3 transition-colors">
-              <span class="text-base">ES</span><span class="text-slate-500">Espanol</span>
-            </button>
-            <button onclick="setLang('pt')" class="lang-option w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 flex items-center gap-3 transition-colors">
-              <span class="text-base">PT</span><span class="text-slate-500">Portugues</span>
-            </button>
-            <button onclick="setLang('fr')" class="lang-option w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 flex items-center gap-3 transition-colors">
-              <span class="text-base">FR</span><span class="text-slate-500">Francais</span>
-            </button>
-            <button onclick="setLang('de')" class="lang-option w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 flex items-center gap-3 transition-colors">
-              <span class="text-base">DE</span><span class="text-slate-500">Deutsch</span>
-            </button>
+            <button onclick="setLang('en')" class="w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 flex items-center gap-3 transition-colors"><span class="font-semibold">EN</span><span class="text-slate-500">English</span></button>
+            <button onclick="setLang('es')" class="w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 flex items-center gap-3 transition-colors"><span class="font-semibold">ES</span><span class="text-slate-500">Espanol</span></button>
+            <button onclick="setLang('pt')" class="w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 flex items-center gap-3 transition-colors"><span class="font-semibold">PT</span><span class="text-slate-500">Portugues</span></button>
+            <button onclick="setLang('fr')" class="w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 flex items-center gap-3 transition-colors"><span class="font-semibold">FR</span><span class="text-slate-500">Francais</span></button>
+            <button onclick="setLang('de')" class="w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 flex items-center gap-3 transition-colors"><span class="font-semibold">DE</span><span class="text-slate-500">Deutsch</span></button>
           </div>
         </div>
 
-        <a href="#contact" data-i18n="nav.cta" class="ml-2 inline-flex items-center gap-2 px-5 py-2.5 bg-accent hover:bg-accent-dark text-white text-sm font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-accent/25 hover:-translate-y-0.5">
-          Get in Touch
-        </a>
+        <a href="#contact" data-i18n="nav.cta" class="ml-2 inline-flex items-center gap-2 px-5 py-2.5 bg-accent hover:bg-accent-dark text-white text-sm font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-accent/25 hover:-translate-y-0.5">Get in Touch</a>
       </div>
 
       <!-- Mobile Hamburger -->
@@ -177,10 +169,10 @@
     <!-- Mobile Menu -->
     <div id="mobileMenu" class="mobile-menu lg:hidden bg-navy-light border-t border-white/5">
       <div class="px-5 py-6 flex flex-col gap-4">
-        <a href="#services" data-i18n="nav.services" class="mobile-link text-base text-slate-300 hover:text-white transition-colors">Services</a>
-        <a href="#tech" data-i18n="nav.technologies" class="mobile-link text-base text-slate-300 hover:text-white transition-colors">Technologies</a>
-        <a href="#about" data-i18n="nav.about" class="mobile-link text-base text-slate-300 hover:text-white transition-colors">About</a>
-        <a href="#contact" data-i18n="nav.contact" class="mobile-link text-base text-slate-300 hover:text-white transition-colors">Contact</a>
+        <a href="#services" data-i18n="nav.services"     class="mobile-link text-base text-slate-300 hover:text-white transition-colors">Services</a>
+        <a href="#tech"     data-i18n="nav.technologies"  class="mobile-link text-base text-slate-300 hover:text-white transition-colors">Technologies</a>
+        <a href="#about"    data-i18n="nav.about"          class="mobile-link text-base text-slate-300 hover:text-white transition-colors">About</a>
+        <a href="#contact"  data-i18n="nav.contact"        class="mobile-link text-base text-slate-300 hover:text-white transition-colors">Contact</a>
         <div class="flex gap-2 pt-2 border-t border-white/10 mt-2">
           <button onclick="setLang('en')" class="text-xs text-slate-400 hover:text-white px-2 py-1 rounded hover:bg-white/5">EN</button>
           <button onclick="setLang('es')" class="text-xs text-slate-400 hover:text-white px-2 py-1 rounded hover:bg-white/5">ES</button>
@@ -194,33 +186,45 @@
   </nav>
 
 
-  <!-- ============================================================
+  <!-- ================================================================
        HERO SECTION
-       ============================================================ -->
+       ================================================================ -->
   <section class="relative min-h-screen flex items-center bg-navy overflow-hidden">
     <!-- Background layers -->
     <div class="absolute inset-0 hero-grid"></div>
-    <div class="absolute inset-0 bg-gradient-to-br from-accent/[0.07] via-transparent to-indigo/[0.05]"></div>
-    <div class="absolute top-1/4 -left-32 w-96 h-96 bg-accent/10 rounded-full blur-[128px]"></div>
-    <div class="absolute bottom-1/4 -right-32 w-80 h-80 bg-indigo/10 rounded-full blur-[128px]"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-accent/[0.06] via-transparent to-indigo/[0.04]"></div>
+    <div class="absolute top-1/4 -left-40 w-[500px] h-[500px] bg-accent/[0.08] rounded-full blur-[140px]"></div>
+    <div class="absolute bottom-1/4 -right-40 w-[400px] h-[400px] bg-indigo/[0.07] rounded-full blur-[140px]"></div>
+
+    <!-- Decorative floating four-leaf clover (large, faded) -->
+    <div class="absolute right-[8%] top-[18%] opacity-[0.04] float hidden lg:block">
+      <svg class="w-72 h-72" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="18" r="11" fill="#10B981"/>
+        <circle cx="46" cy="32" r="11" fill="#10B981"/>
+        <circle cx="32" cy="46" r="11" fill="#10B981"/>
+        <circle cx="18" cy="32" r="11" fill="#10B981"/>
+        <circle cx="32" cy="32" r="5" fill="#10B981"/>
+      </svg>
+    </div>
 
     <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-32 pb-20 lg:pt-0 lg:pb-0 w-full">
       <div class="max-w-3xl">
+
         <!-- Badge -->
-        <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
+        <div class="reveal inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] mb-8">
           <span class="w-2 h-2 bg-emerald rounded-full animate-pulse"></span>
           <span data-i18n="hero.badge" class="text-sm font-medium text-slate-400">Enterprise Technology Consulting</span>
         </div>
 
         <!-- Heading -->
-        <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.08] tracking-tight mb-8">
-          <span data-i18n="hero.title1">Engineering the Systems That </span>
-          <span class="gradient-text" data-i18n="hero.title2">Power Your Growth</span>
+        <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] font-extrabold text-white leading-[1.08] tracking-tight mb-8">
+          <span data-i18n="hero.title1">Strategic Growth, </span>
+          <span class="gradient-text" data-i18n="hero.title2">Engineered to Last</span>
         </h1>
 
         <!-- Subtitle -->
         <p class="reveal reveal-delay-2 text-lg sm:text-xl text-slate-400 leading-relaxed max-w-2xl mb-10" data-i18n="hero.subtitle">
-          We partner with ambitious companies to architect, build, and scale the technology that drives measurable business outcomes. From cloud infrastructure to custom platforms, we deliver engineering excellence.
+          We partner with ambitious companies to architect, build, and scale the technology platforms that drive measurable business outcomes. Deep expertise. Proven results. Long-term value.
         </p>
 
         <!-- CTAs -->
@@ -254,73 +258,71 @@
   </section>
 
 
-  <!-- ============================================================
+  <!-- ================================================================
        SERVICES
-       ============================================================ -->
+       ================================================================ -->
   <section id="services" class="py-24 sm:py-32 bg-surface">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
-      <!-- Section Header -->
       <div class="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
         <p class="reveal text-sm font-semibold tracking-widest uppercase text-accent mb-4" data-i18n="services.label">What We Do</p>
         <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-heading tracking-tight mb-5" data-i18n="services.title">End-to-End Technology Services</h2>
-        <p class="reveal reveal-delay-2 text-lg text-muted leading-relaxed" data-i18n="services.subtitle">We cover the full spectrum of modern software consulting, from initial architecture to production operations.</p>
+        <p class="reveal reveal-delay-2 text-lg text-muted leading-relaxed" data-i18n="services.subtitle">We cover the full spectrum of modern software consulting -- from initial architecture through production operations and beyond.</p>
       </div>
 
-      <!-- Services Grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
-        <!-- Service 1 -->
-        <div class="reveal group bg-white rounded-2xl p-8 border border-border hover:border-accent/30 transition-all duration-300 hover:shadow-xl hover:shadow-accent/5 hover:-translate-y-1">
-          <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-300">
-            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        <!-- Service 1: Custom Software -->
+        <div class="reveal service-glow group bg-white rounded-2xl p-8 sm:p-9 border border-border hover:border-accent/30 hover:-translate-y-1.5">
+          <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:shadow-lg group-hover:shadow-accent/20 transition-all duration-300">
+            <svg class="w-7 h-7 text-accent group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
           </div>
           <h3 class="text-xl font-bold text-heading mb-3" data-i18n="services.s1.title">Custom Software Development</h3>
-          <p class="text-muted leading-relaxed" data-i18n="services.s1.desc">Purpose-built applications engineered for your business logic. We ship production-ready platforms using Ruby on Rails, Python, and modern JavaScript -- built to scale from day one.</p>
+          <p class="text-muted leading-relaxed text-[15px]" data-i18n="services.s1.desc">Purpose-built applications engineered for your business logic. We ship production-ready platforms using Ruby on Rails, Python, and modern JavaScript -- architected to scale from day one.</p>
         </div>
 
-        <!-- Service 2 -->
-        <div class="reveal reveal-delay-1 group bg-white rounded-2xl p-8 border border-border hover:border-emerald/30 transition-all duration-300 hover:shadow-xl hover:shadow-emerald/5 hover:-translate-y-1">
-          <div class="w-14 h-14 rounded-xl bg-emerald/10 flex items-center justify-center mb-6 group-hover:bg-emerald/20 transition-colors duration-300">
-            <svg class="w-7 h-7 text-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+        <!-- Service 2: Cloud & DevOps -->
+        <div class="reveal reveal-delay-1 service-glow group bg-white rounded-2xl p-8 sm:p-9 border border-border hover:border-emerald/30 hover:-translate-y-1.5">
+          <div class="w-14 h-14 rounded-xl bg-emerald/10 flex items-center justify-center mb-6 group-hover:bg-emerald group-hover:shadow-lg group-hover:shadow-emerald/20 transition-all duration-300">
+            <svg class="w-7 h-7 text-emerald group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-heading mb-3" data-i18n="services.s2.title">Cloud & DevOps</h3>
-          <p class="text-muted leading-relaxed" data-i18n="services.s2.desc">Infrastructure as code, automated CI/CD pipelines, containerization, and cloud-native architecture on AWS and Azure. We make your deployments reliable, repeatable, and fast.</p>
+          <p class="text-muted leading-relaxed text-[15px]" data-i18n="services.s2.desc">Infrastructure as code, automated CI/CD pipelines, containerization, and cloud-native architecture on AWS and Azure. We make your deployments reliable, repeatable, and fast.</p>
         </div>
 
-        <!-- Service 3 -->
-        <div class="reveal reveal-delay-2 group bg-white rounded-2xl p-8 border border-border hover:border-indigo/30 transition-all duration-300 hover:shadow-xl hover:shadow-indigo/5 hover:-translate-y-1">
-          <div class="w-14 h-14 rounded-xl bg-indigo/10 flex items-center justify-center mb-6 group-hover:bg-indigo/20 transition-colors duration-300">
-            <svg class="w-7 h-7 text-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+        <!-- Service 3: Architecture -->
+        <div class="reveal reveal-delay-2 service-glow group bg-white rounded-2xl p-8 sm:p-9 border border-border hover:border-indigo/30 hover:-translate-y-1.5">
+          <div class="w-14 h-14 rounded-xl bg-indigo/10 flex items-center justify-center mb-6 group-hover:bg-indigo group-hover:shadow-lg group-hover:shadow-indigo/20 transition-all duration-300">
+            <svg class="w-7 h-7 text-indigo group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-heading mb-3" data-i18n="services.s3.title">Architecture & Strategy</h3>
-          <p class="text-muted leading-relaxed" data-i18n="services.s3.desc">Technical due diligence, system design reviews, and migration roadmaps. We help you make architectural decisions that reduce risk and align with long-term business goals.</p>
+          <p class="text-muted leading-relaxed text-[15px]" data-i18n="services.s3.desc">Technical due diligence, system design reviews, and migration roadmaps. We help you make architectural decisions that reduce risk and align technology with long-term business goals.</p>
         </div>
 
-        <!-- Service 4 -->
-        <div class="reveal group bg-white rounded-2xl p-8 border border-border hover:border-accent/30 transition-all duration-300 hover:shadow-xl hover:shadow-accent/5 hover:-translate-y-1">
-          <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-300">
-            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        <!-- Service 4: Team Augmentation -->
+        <div class="reveal service-glow group bg-white rounded-2xl p-8 sm:p-9 border border-border hover:border-accent/30 hover:-translate-y-1.5">
+          <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:shadow-lg group-hover:shadow-accent/20 transition-all duration-300">
+            <svg class="w-7 h-7 text-accent group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-heading mb-3" data-i18n="services.s4.title">Team Augmentation</h3>
-          <p class="text-muted leading-relaxed" data-i18n="services.s4.desc">Embed senior engineers directly into your team. We accelerate delivery, mentor your developers, and transfer knowledge -- so you keep the expertise long after we leave.</p>
+          <p class="text-muted leading-relaxed text-[15px]" data-i18n="services.s4.desc">Embed senior engineers directly into your team. We accelerate delivery, mentor your developers, and transfer knowledge -- so you retain the expertise long after we leave.</p>
         </div>
 
-        <!-- Service 5 -->
-        <div class="reveal reveal-delay-1 group bg-white rounded-2xl p-8 border border-border hover:border-emerald/30 transition-all duration-300 hover:shadow-xl hover:shadow-emerald/5 hover:-translate-y-1">
-          <div class="w-14 h-14 rounded-xl bg-emerald/10 flex items-center justify-center mb-6 group-hover:bg-emerald/20 transition-colors duration-300">
-            <svg class="w-7 h-7 text-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        <!-- Service 5: Code Audits -->
+        <div class="reveal reveal-delay-1 service-glow group bg-white rounded-2xl p-8 sm:p-9 border border-border hover:border-emerald/30 hover:-translate-y-1.5">
+          <div class="w-14 h-14 rounded-xl bg-emerald/10 flex items-center justify-center mb-6 group-hover:bg-emerald group-hover:shadow-lg group-hover:shadow-emerald/20 transition-all duration-300">
+            <svg class="w-7 h-7 text-emerald group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-heading mb-3" data-i18n="services.s5.title">Code Audits & Reviews</h3>
-          <p class="text-muted leading-relaxed" data-i18n="services.s5.desc">In-depth code quality assessments, security audits, and performance profiling. We identify technical debt, vulnerabilities, and bottlenecks before they become incidents.</p>
+          <p class="text-muted leading-relaxed text-[15px]" data-i18n="services.s5.desc">In-depth code quality assessments, security audits, and performance profiling. We identify technical debt, vulnerabilities, and bottlenecks before they become production incidents.</p>
         </div>
 
-        <!-- Service 6 -->
-        <div class="reveal reveal-delay-2 group bg-white rounded-2xl p-8 border border-border hover:border-indigo/30 transition-all duration-300 hover:shadow-xl hover:shadow-indigo/5 hover:-translate-y-1">
-          <div class="w-14 h-14 rounded-xl bg-indigo/10 flex items-center justify-center mb-6 group-hover:bg-indigo/20 transition-colors duration-300">
-            <svg class="w-7 h-7 text-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        <!-- Service 6: Data -->
+        <div class="reveal reveal-delay-2 service-glow group bg-white rounded-2xl p-8 sm:p-9 border border-border hover:border-indigo/30 hover:-translate-y-1.5">
+          <div class="w-14 h-14 rounded-xl bg-indigo/10 flex items-center justify-center mb-6 group-hover:bg-indigo group-hover:shadow-lg group-hover:shadow-indigo/20 transition-all duration-300">
+            <svg class="w-7 h-7 text-indigo group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-heading mb-3" data-i18n="services.s6.title">Data & Analytics</h3>
-          <p class="text-muted leading-relaxed" data-i18n="services.s6.desc">Data pipeline engineering, API integrations, and analytics platforms. We build the data infrastructure that turns raw information into actionable business intelligence.</p>
+          <p class="text-muted leading-relaxed text-[15px]" data-i18n="services.s6.desc">Data pipeline engineering, API integrations, and analytics platforms. We build the data infrastructure that transforms raw information into actionable business intelligence.</p>
         </div>
 
       </div>
@@ -328,9 +330,9 @@
   </section>
 
 
-  <!-- ============================================================
+  <!-- ================================================================
        TECHNOLOGIES
-       ============================================================ -->
+       ================================================================ -->
   <section id="tech" class="py-24 sm:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
@@ -339,67 +341,78 @@
         <p class="reveal reveal-delay-2 text-lg text-muted leading-relaxed" data-i18n="tech.subtitle">Deep, production-proven expertise across the modern technology landscape.</p>
       </div>
 
-      <!-- Tech Grid: 2 rows of 6 -->
-      <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
+      <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5">
 
-        <div class="reveal group flex flex-col items-center gap-3 p-6 rounded-2xl border border-border bg-surface hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1">
-          <svg class="w-10 h-10 text-slate-400 group-hover:text-accent transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor"><path d="M20.156.083c3.033.525 3.893 2.598 3.829 4.77L24 4.822 22.635 22.71 11.29 23.917 0 22.722 1.357 4.63l.009-.052c.081-2.14.975-4.157 3.96-4.583L12 0l8.156.083zM9.927 12.607l-1.167-1.31-2.063 1.141L9.94 16.38l.102.073 5.455-6.64c-2.392-.593-4.016.498-5.57 2.794z"/></svg>
-          <span class="text-sm font-semibold text-heading">Ruby / Rails</span>
+        <!-- Ruby -->
+        <div class="reveal group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-border bg-surface hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+          <svg class="w-9 h-9 sm:w-10 sm:h-10 text-slate-400 group-hover:text-accent transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z"/></svg>
+          <span class="text-xs sm:text-sm font-semibold text-heading text-center">Ruby / Rails</span>
         </div>
 
-        <div class="reveal reveal-delay-1 group flex flex-col items-center gap-3 p-6 rounded-2xl border border-border bg-surface hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1">
-          <svg class="w-10 h-10 text-slate-400 group-hover:text-accent transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor"><path d="M14.31.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.83l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.23l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.25-.02h.05l9.83-.04.27-.07.22-.12.17-.19.1-.26.04-.31v-1.01l-.04-.3-.1-.23-.16-.16-.22-.11-.27-.05h-6.24l.06-.63.18-.56.25-.47.33-.38.37-.29.42-.22.44-.15.43-.1.39-.06.36-.03h3.55l.68.07.63.15.57.22.5.28.44.33.36.39.3.43.22.48.15.53.1.56.04.6v3.71l-.04.57-.11.53-.17.46-.24.38-.3.32-.35.25-.38.19-.4.14-.4.1-.39.06-.37.03H3.86l-.69-.05-.58-.14-.5-.21-.42-.28-.35-.32-.28-.35-.22-.37-.16-.38-.1-.36-.07-.33-.04-.29-.01-.25v-4.29l.03-.23.1-.22.15-.17.22-.13.26-.08.3-.04h1.81l.22.04.17.1.13.17.07.22.02.28v1.48l.04.22.1.17.17.12.22.07.28.02h2.56l.22-.04.17-.1.12-.17.07-.22.02-.28V4.53l.04-.66.12-.59.2-.5.26-.42.33-.34.37-.27.41-.2.44-.14.44-.09.43-.05.39-.02h.05z"/></svg>
-          <span class="text-sm font-semibold text-heading">Python</span>
+        <!-- Python -->
+        <div class="reveal reveal-delay-1 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-border bg-surface hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+          <svg class="w-9 h-9 sm:w-10 sm:h-10 text-slate-400 group-hover:text-accent transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/></svg>
+          <span class="text-xs sm:text-sm font-semibold text-heading text-center">Python</span>
         </div>
 
-        <div class="reveal reveal-delay-2 group flex flex-col items-center gap-3 p-6 rounded-2xl border border-border bg-surface hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1">
-          <svg class="w-10 h-10 text-slate-400 group-hover:text-accent transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.405-.6-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>
-          <span class="text-sm font-semibold text-heading">JavaScript</span>
+        <!-- JavaScript -->
+        <div class="reveal reveal-delay-2 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-border bg-surface hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+          <svg class="w-9 h-9 sm:w-10 sm:h-10 text-slate-400 group-hover:text-accent transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
+          <span class="text-xs sm:text-sm font-semibold text-heading text-center">JavaScript</span>
         </div>
 
-        <div class="reveal reveal-delay-3 group flex flex-col items-center gap-3 p-6 rounded-2xl border border-border bg-surface hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1">
-          <svg class="w-10 h-10 text-slate-400 group-hover:text-accent transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.31 0-.592.06-.838.182C4.61 2.291 4.26 4.09 4.636 6.62c-2.09.67-3.453 1.766-3.453 2.997 0 2.282 3.952 4.263 8.854 4.386-.069.29-.107.596-.107.912 0 2.455 1.99 4.445 4.445 4.445a4.444 4.444 0 0 0 4.098-6.125c2.138-.653 3.544-1.756 3.544-3.005 0-1.232-1.367-2.33-3.466-3-.354-2.493-.717-4.264-2.373-5.166a2.147 2.147 0 0 0-1.04-.248z"/></svg>
-          <span class="text-sm font-semibold text-heading">React</span>
+        <!-- React -->
+        <div class="reveal reveal-delay-3 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-border bg-surface hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+          <svg class="w-9 h-9 sm:w-10 sm:h-10 text-slate-400 group-hover:text-accent transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
+          <span class="text-xs sm:text-sm font-semibold text-heading text-center">React</span>
         </div>
 
-        <div class="reveal reveal-delay-4 group flex flex-col items-center gap-3 p-6 rounded-2xl border border-border bg-surface hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1">
-          <svg class="w-10 h-10 text-slate-400 group-hover:text-accent transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h11.377v2.556H2.554v8.444h7.276V13.5H2.554V24H0V0zm14.623 0h2.386l5.33 8.652L27.669 0h2.386v24h-2.54V4.48L22.339 13.2h-.067L17.163 4.48V24h-2.54V0z" transform="scale(0.8)"/></svg>
-          <span class="text-sm font-semibold text-heading">Next.js</span>
+        <!-- Next.js -->
+        <div class="reveal reveal-delay-4 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-border bg-surface hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+          <svg class="w-9 h-9 sm:w-10 sm:h-10 text-slate-400 group-hover:text-accent transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+          <span class="text-xs sm:text-sm font-semibold text-heading text-center">Next.js</span>
         </div>
 
-        <div class="reveal reveal-delay-5 group flex flex-col items-center gap-3 p-6 rounded-2xl border border-border bg-surface hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1">
-          <svg class="w-10 h-10 text-slate-400 group-hover:text-accent transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/></svg>
-          <span class="text-sm font-semibold text-heading">Tailwind</span>
+        <!-- Node.js -->
+        <div class="reveal reveal-delay-5 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-border bg-surface hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+          <svg class="w-9 h-9 sm:w-10 sm:h-10 text-slate-400 group-hover:text-accent transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008H15v-.008z"/></svg>
+          <span class="text-xs sm:text-sm font-semibold text-heading text-center">Node.js</span>
         </div>
 
-        <div class="reveal group flex flex-col items-center gap-3 p-6 rounded-2xl border border-border bg-surface hover:border-emerald/40 hover:bg-emerald/5 transition-all duration-300 hover:-translate-y-1">
-          <svg class="w-10 h-10 text-slate-400 group-hover:text-emerald transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor"><path d="M18.75 11.35a4.32 4.32 0 0 1-.79-.06 3.03 3.03 0 0 1-1.63-.88c-.44-.5-.73-1.17-.88-2.01a7.75 7.75 0 0 1-.07-1.69c.02-.22.04-.43.06-.65.02-.2.03-.4.05-.6.05-.67.08-1.24.05-1.72a3.49 3.49 0 0 0-.21-1.08 1.54 1.54 0 0 0-.6-.74c-.3-.2-.72-.32-1.23-.37l-.1-.01v-1.1h.16c.82.04 1.5.18 2.06.43.55.24.99.58 1.32 1.01.33.43.56.95.69 1.55.12.6.16 1.27.12 2.02-.02.27-.04.54-.07.82-.02.21-.04.43-.06.64-.04.56-.06 1.07-.03 1.53.04.52.13.96.3 1.31.17.36.42.65.78.87.35.22.82.35 1.4.38l.17.01v1.1l-.17.01c-.58.03-1.05.16-1.4.38-.35.22-.61.51-.78.87-.17.35-.26.79-.3 1.31-.03.46-.01.97.03 1.53.02.21.04.43.06.64.03.28.05.55.07.82.04.75 0 1.42-.12 2.02-.13.6-.36 1.12-.69 1.55a3.43 3.43 0 0 1-1.32 1.01c-.56.25-1.24.4-2.06.43h-.16v-1.1l.1-.01c.52-.05.93-.17 1.23-.37.31-.2.5-.44.6-.74.12-.33.19-.72.21-1.08.03-.48 0-1.05-.05-1.72-.01-.2-.03-.4-.05-.6-.02-.22-.04-.43-.06-.65a7.75 7.75 0 0 1 .07-1.69c.14-.84.44-1.51.88-2.01a3.03 3.03 0 0 1 1.63-.88c.26-.05.52-.07.79-.06zm-13.5 0c.27-.01.53.01.79.06.62.13 1.17.43 1.63.88.44.5.73 1.17.88 2.01.1.56.11 1.14.07 1.69-.02.22-.04.43-.06.65-.02.2-.03.4-.05.6-.05.67-.08 1.24-.05 1.72.02.36.09.75.21 1.08.1.3.3.54.6.74.3.2.72.32 1.23.37l.1.01v1.1h-.16c-.82-.04-1.5-.18-2.06-.43a3.43 3.43 0 0 1-1.32-1.01 4.15 4.15 0 0 1-.69-1.55c-.12-.6-.16-1.27-.12-2.02.02-.27.04-.54.07-.82.02-.21.04-.43.06-.64.04-.56.06-1.07.03-1.53a3.41 3.41 0 0 0-.3-1.31c-.17-.36-.42-.65-.78-.87-.35-.22-.82-.35-1.4-.38l-.17-.01v-1.1l.17-.01c.58-.03 1.05-.16 1.4-.38.35-.22.61-.51.78-.87.17-.35.26-.79.3-1.31.03-.46.01-.97-.03-1.53-.02-.21-.04-.43-.06-.64-.03-.28-.05-.55-.07-.82-.04-.75 0-1.42.12-2.02.13-.6.36-1.12.69-1.55a3.43 3.43 0 0 1 1.32-1.01c.56-.25 1.24-.4 2.06-.43h.16v1.1l-.1.01c-.52.05-.93.17-1.23.37a1.54 1.54 0 0 0-.6.74c-.12.33-.19.72-.21 1.08-.03.48 0 1.05.05 1.72.01.2.03.4.05.6.02.22.04.43.06.65.04.55.03 1.13-.07 1.69-.14.84-.44 1.51-.88 2.01a3.03 3.03 0 0 1-1.63.88c-.26.05-.52.07-.79.06z"/></svg>
-          <span class="text-sm font-semibold text-heading">Node.js</span>
+        <!-- AWS -->
+        <div class="reveal group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-border bg-surface hover:border-emerald/40 hover:bg-emerald/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald/5">
+          <svg class="w-9 h-9 sm:w-10 sm:h-10 text-slate-400 group-hover:text-emerald transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/></svg>
+          <span class="text-xs sm:text-sm font-semibold text-heading text-center">AWS</span>
         </div>
 
-        <div class="reveal reveal-delay-1 group flex flex-col items-center gap-3 p-6 rounded-2xl border border-border bg-surface hover:border-emerald/40 hover:bg-emerald/5 transition-all duration-300 hover:-translate-y-1">
-          <svg class="w-10 h-10 text-slate-400 group-hover:text-emerald transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor"><path d="M13.74 4.23c-.84-1-1.57-2-1.71-2.22H12c-.14.21-.87 1.22-1.71 2.22-7.2 9.19 1.59 15.95 1.59 15.95l.1.08c.12 1.72.76 3.08.76 3.08h2.5s.65-1.36.76-3.08l.1-.08s8.84-6.76 1.64-15.95zM12 19.48a1.48 1.48 0 1 1 0-2.96 1.48 1.48 0 0 1 0 2.96z"/></svg>
-          <span class="text-sm font-semibold text-heading">AWS</span>
+        <!-- Azure -->
+        <div class="reveal reveal-delay-1 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-border bg-surface hover:border-emerald/40 hover:bg-emerald/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald/5">
+          <svg class="w-9 h-9 sm:w-10 sm:h-10 text-slate-400 group-hover:text-emerald transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"/></svg>
+          <span class="text-xs sm:text-sm font-semibold text-heading text-center">Azure</span>
         </div>
 
-        <div class="reveal reveal-delay-2 group flex flex-col items-center gap-3 p-6 rounded-2xl border border-border bg-surface hover:border-emerald/40 hover:bg-emerald/5 transition-all duration-300 hover:-translate-y-1">
-          <svg class="w-10 h-10 text-slate-400 group-hover:text-emerald transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor"><path d="M22.379 23.498a1.975 1.975 0 0 0 1.119-.629l-5.108-2.972-.479.37-5.705 3.476a1.39 1.39 0 0 1-1.412 0L5.2 20.512l-.479-.37L0 23.103c.339.396.739.535 1.12.621l9.903 0h1.954l9.902 0zM5.552 4.722V19.348l6.243 3.614 6.248-3.614V4.722l-6.248-3.563-6.243 3.563z"/></svg>
-          <span class="text-sm font-semibold text-heading">Azure</span>
+        <!-- Docker -->
+        <div class="reveal reveal-delay-2 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-border bg-surface hover:border-emerald/40 hover:bg-emerald/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald/5">
+          <svg class="w-9 h-9 sm:w-10 sm:h-10 text-slate-400 group-hover:text-emerald transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-2.25-1.313M21 7.5v2.25m0-2.25l-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3l2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75l2.25-1.313M12 21.75V19.5m0 2.25l-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25"/></svg>
+          <span class="text-xs sm:text-sm font-semibold text-heading text-center">Docker</span>
         </div>
 
-        <div class="reveal reveal-delay-3 group flex flex-col items-center gap-3 p-6 rounded-2xl border border-border bg-surface hover:border-emerald/40 hover:bg-emerald/5 transition-all duration-300 hover:-translate-y-1">
-          <svg class="w-10 h-10 text-slate-400 group-hover:text-emerald transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor"><path d="M4.82 17.1c-.7 0-1.28-.23-1.77-.68-.48-.46-.73-1.03-.73-1.71 0-.7.23-1.27.7-1.72.47-.45 1.06-.68 1.76-.68.33 0 .64.06.93.16l.26.1-.82 1.47-.51-.21a.86.86 0 0 0-.35-.07c-.28 0-.5.08-.66.24-.16.16-.24.39-.24.69 0 .3.09.53.26.7.17.16.39.24.66.24a.98.98 0 0 0 .85-.47l1.3.75c-.27.39-.6.68-1 .87-.39.2-.82.29-1.28.29l-.06.02zM12 22.36L4.91 18.26V9.74L12 5.64l7.09 4.1v8.52L12 22.36zm-5.2-5.28l5.2 3 5.2-3v-6L12 8.08l-5.2 3v6z"/></svg>
-          <span class="text-sm font-semibold text-heading">Docker</span>
+        <!-- Kubernetes -->
+        <div class="reveal reveal-delay-3 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-border bg-surface hover:border-emerald/40 hover:bg-emerald/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald/5">
+          <svg class="w-9 h-9 sm:w-10 sm:h-10 text-slate-400 group-hover:text-emerald transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/></svg>
+          <span class="text-xs sm:text-sm font-semibold text-heading text-center">Kubernetes</span>
         </div>
 
-        <div class="reveal reveal-delay-4 group flex flex-col items-center gap-3 p-6 rounded-2xl border border-border bg-surface hover:border-emerald/40 hover:bg-emerald/5 transition-all duration-300 hover:-translate-y-1">
-          <svg class="w-10 h-10 text-slate-400 group-hover:text-emerald transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor"><path d="M10.204 14.35l.007.01-.999 2.413a5.171 5.171 0 0 1-2.075-2.597l2.578-.437.004.005a.44.44 0 0 1 .484.606zm-.833-2.129a.44.44 0 0 0 .173-.756l.002-.011L7.585 9.7a5.143 5.143 0 0 0-.73 3.255l2.514-.725.002-.009zm1.145-1.98a.44.44 0 0 0 .699-.337l.01-.005.15-2.62a5.144 5.144 0 0 0-3.01 1.442l2.147 1.523.004-.002zm2.369.357a.44.44 0 0 0 .699.337l.01.005 2.17-1.542a5.147 5.147 0 0 0-3.027-1.407l.145 2.6.003.007zm1.205 1.624a.44.44 0 0 0 .173.756l.002.01 2.569.445a5.18 5.18 0 0 0-.726-3.29l-2.015 2.07-.003.009zm-.766 1.967a.44.44 0 0 0 .485-.607l.004-.005 1.058-2.387a5.15 5.15 0 0 0-2.1 2.581l.546.41.007.008zM12 6.042c-3.292 0-5.96 2.667-5.96 5.958S8.708 17.958 12 17.958s5.96-2.667 5.96-5.958S15.292 6.042 12 6.042zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0z"/></svg>
-          <span class="text-sm font-semibold text-heading">Kubernetes</span>
+        <!-- Terraform -->
+        <div class="reveal reveal-delay-4 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-border bg-surface hover:border-emerald/40 hover:bg-emerald/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald/5">
+          <svg class="w-9 h-9 sm:w-10 sm:h-10 text-slate-400 group-hover:text-emerald transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0l4.179 2.25L12 17.25 2.25 12l4.179-2.25m11.142 0l-5.571 3-5.571-3m11.142 4.5L21.75 12l-4.179 2.25m0 0l-5.571 3-5.571-3"/></svg>
+          <span class="text-xs sm:text-sm font-semibold text-heading text-center">Terraform</span>
         </div>
 
-        <div class="reveal reveal-delay-5 group flex flex-col items-center gap-3 p-6 rounded-2xl border border-border bg-surface hover:border-emerald/40 hover:bg-emerald/5 transition-all duration-300 hover:-translate-y-1">
-          <svg class="w-10 h-10 text-slate-400 group-hover:text-emerald transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor"><path d="M1.44 0C.644 0 0 .644 0 1.44v21.12c0 .796.644 1.44 1.44 1.44h21.12c.796 0 1.44-.644 1.44-1.44V1.44C24 .644 23.356 0 22.56 0H1.44zm6.14 7.893L12 14.293l4.42-6.4h3.24l-7.66 10.773L4.34 7.893h3.24z"/></svg>
-          <span class="text-sm font-semibold text-heading">Terraform</span>
+        <!-- PostgreSQL -->
+        <div class="reveal reveal-delay-5 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-border bg-surface hover:border-emerald/40 hover:bg-emerald/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald/5">
+          <svg class="w-9 h-9 sm:w-10 sm:h-10 text-slate-400 group-hover:text-emerald transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg>
+          <span class="text-xs sm:text-sm font-semibold text-heading text-center">PostgreSQL</span>
         </div>
 
       </div>
@@ -407,72 +420,82 @@
   </section>
 
 
-  <!-- ============================================================
+  <!-- ================================================================
        WHY MONTREBO
-       ============================================================ -->
+       ================================================================ -->
   <section id="about" class="py-24 sm:py-32 bg-navy relative overflow-hidden">
-    <!-- Background glow -->
-    <div class="absolute top-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[128px]"></div>
-    <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-indigo/5 rounded-full blur-[128px]"></div>
+    <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-accent/[0.04] rounded-full blur-[150px]"></div>
+    <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-emerald/[0.04] rounded-full blur-[150px]"></div>
+
+    <!-- Decorative floating four-leaf clover -->
+    <div class="absolute left-[5%] bottom-[10%] opacity-[0.03] float-delay hidden lg:block">
+      <svg class="w-48 h-48" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="18" r="11" fill="#10B981"/>
+        <circle cx="46" cy="32" r="11" fill="#10B981"/>
+        <circle cx="32" cy="46" r="11" fill="#10B981"/>
+        <circle cx="18" cy="32" r="11" fill="#10B981"/>
+        <circle cx="32" cy="32" r="5" fill="#10B981"/>
+      </svg>
+    </div>
 
     <div class="relative max-w-7xl mx-auto px-5 sm:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
-        <p class="reveal text-sm font-semibold tracking-widest uppercase text-accent mb-4" data-i18n="about.label">Why Us</p>
-        <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-5" data-i18n="about.title">Built for Engineering Excellence</h2>
-        <p class="reveal reveal-delay-2 text-lg text-slate-400 leading-relaxed" data-i18n="about.subtitle">We don't just write code. We architect solutions that drive revenue, reduce operational costs, and position your technology as a competitive advantage.</p>
+        <p class="reveal text-sm font-semibold tracking-widest uppercase text-emerald mb-4" data-i18n="about.label">Why Us</p>
+        <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-6" data-i18n="about.title">Built for Engineering Excellence</h2>
+        <p class="reveal reveal-delay-2 text-lg text-slate-400 leading-relaxed" data-i18n="about.subtitle">We don't just write code. We architect solutions that drive revenue, reduce operational costs, and position your technology as a lasting competitive advantage.</p>
       </div>
 
       <!-- Stats -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-        <div class="reveal glass rounded-2xl p-8 text-center">
-          <div class="text-4xl sm:text-5xl font-extrabold gradient-text mb-2">50+</div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mb-20">
+        <div class="reveal glass rounded-2xl p-8 text-center hover:-translate-y-1 transition-transform duration-300">
+          <div class="text-4xl sm:text-5xl font-extrabold gradient-text mb-3">50+</div>
           <p class="text-sm font-medium text-slate-400" data-i18n="about.stat1">Projects Delivered</p>
         </div>
-        <div class="reveal reveal-delay-1 glass rounded-2xl p-8 text-center">
-          <div class="text-4xl sm:text-5xl font-extrabold gradient-text mb-2">10+</div>
+        <div class="reveal reveal-delay-1 glass rounded-2xl p-8 text-center hover:-translate-y-1 transition-transform duration-300">
+          <div class="text-4xl sm:text-5xl font-extrabold gradient-text mb-3">10+</div>
           <p class="text-sm font-medium text-slate-400" data-i18n="about.stat2">Years of Delivery</p>
         </div>
-        <div class="reveal reveal-delay-2 glass rounded-2xl p-8 text-center">
-          <div class="text-4xl sm:text-5xl font-extrabold gradient-text mb-2">99.9%</div>
+        <div class="reveal reveal-delay-2 glass rounded-2xl p-8 text-center hover:-translate-y-1 transition-transform duration-300">
+          <div class="text-4xl sm:text-5xl font-extrabold gradient-text-emerald mb-3">99.9%</div>
           <p class="text-sm font-medium text-slate-400" data-i18n="about.stat3">Uptime SLA Achieved</p>
         </div>
-        <div class="reveal reveal-delay-3 glass rounded-2xl p-8 text-center">
-          <div class="text-4xl sm:text-5xl font-extrabold gradient-text mb-2">30+</div>
+        <div class="reveal reveal-delay-3 glass rounded-2xl p-8 text-center hover:-translate-y-1 transition-transform duration-300">
+          <div class="text-4xl sm:text-5xl font-extrabold gradient-text mb-3">30+</div>
           <p class="text-sm font-medium text-slate-400" data-i18n="about.stat4">Enterprise Clients</p>
         </div>
       </div>
 
       <!-- Values -->
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-3 gap-8 sm:gap-10">
         <div class="reveal">
           <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
             <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-3" data-i18n="about.v1.title">Clean Code, Always</h3>
-          <p class="text-slate-400 leading-relaxed" data-i18n="about.v1.desc">Every line we write is tested, reviewed, and documented. We build systems designed for the engineers who come after us -- because maintainability is not optional, it's foundational.</p>
+          <p class="text-slate-400 leading-relaxed text-[15px]" data-i18n="about.v1.desc">Every line we write is tested, reviewed, and documented. We build systems designed for the engineers who come after us -- because maintainability is not optional, it's foundational.</p>
         </div>
         <div class="reveal reveal-delay-1">
           <div class="w-12 h-12 rounded-xl bg-emerald/10 flex items-center justify-center mb-5">
             <svg class="w-6 h-6 text-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-3" data-i18n="about.v2.title">Honest Communication</h3>
-          <p class="text-slate-400 leading-relaxed" data-i18n="about.v2.desc">No vanity metrics, no sugar-coating. We give you direct, technical feedback and transparent timelines. If something won't work, you'll hear it from us first.</p>
+          <p class="text-slate-400 leading-relaxed text-[15px]" data-i18n="about.v2.desc">No vanity metrics, no sugar-coating. We give you direct, technical feedback and transparent timelines. If something won't work, you'll hear it from us first.</p>
         </div>
         <div class="reveal reveal-delay-2">
           <div class="w-12 h-12 rounded-xl bg-indigo/10 flex items-center justify-center mb-5">
             <svg class="w-6 h-6 text-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/></svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-3" data-i18n="about.v3.title">Long-Term Partnership</h3>
-          <p class="text-slate-400 leading-relaxed" data-i18n="about.v3.desc">We measure success by the value we create over years, not sprints. Most of our clients become long-term partners because we treat their technology as if it were our own.</p>
+          <p class="text-slate-400 leading-relaxed text-[15px]" data-i18n="about.v3.desc">We measure success by the value we create over years, not sprints. Most of our clients become long-term partners because we treat their technology as if it were our own.</p>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ============================================================
+  <!-- ================================================================
        CONTACT
-       ============================================================ -->
+       ================================================================ -->
   <section id="contact" class="py-24 sm:py-32 bg-surface">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
@@ -524,47 +547,35 @@
             <div class="grid sm:grid-cols-2 gap-5 mb-5">
               <div>
                 <label class="block text-sm font-medium text-heading mb-2" data-i18n="contact.form.name">Full Name</label>
-                <input type="text" name="name" required
-                  class="w-full px-4 py-3.5 rounded-xl border border-border bg-surface text-heading placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all duration-200"
-                  data-i18n-placeholder="contact.form.name.ph" placeholder="John Smith">
+                <input type="text" name="name" required class="w-full px-4 py-3.5 rounded-xl border border-border bg-surface text-heading placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all duration-200" data-i18n-placeholder="contact.form.name.ph" placeholder="John Smith">
               </div>
               <div>
                 <label class="block text-sm font-medium text-heading mb-2" data-i18n="contact.form.email">Work Email</label>
-                <input type="email" name="email" required
-                  class="w-full px-4 py-3.5 rounded-xl border border-border bg-surface text-heading placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all duration-200"
-                  data-i18n-placeholder="contact.form.email.ph" placeholder="john@company.com">
+                <input type="email" name="email" required class="w-full px-4 py-3.5 rounded-xl border border-border bg-surface text-heading placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all duration-200" data-i18n-placeholder="contact.form.email.ph" placeholder="john@company.com">
               </div>
             </div>
             <div class="mb-5">
               <label class="block text-sm font-medium text-heading mb-2" data-i18n="contact.form.company">Company</label>
-              <input type="text" name="company"
-                class="w-full px-4 py-3.5 rounded-xl border border-border bg-surface text-heading placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all duration-200"
-                data-i18n-placeholder="contact.form.company.ph" placeholder="Your company name">
+              <input type="text" name="company" class="w-full px-4 py-3.5 rounded-xl border border-border bg-surface text-heading placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all duration-200" data-i18n-placeholder="contact.form.company.ph" placeholder="Your company name">
             </div>
             <div class="mb-5">
               <label class="block text-sm font-medium text-heading mb-2" data-i18n="contact.form.service">How Can We Help?</label>
-              <select name="service" required
-                class="w-full px-4 py-3.5 rounded-xl border border-border bg-surface text-heading text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all duration-200 appearance-none"
-                style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 20 20%22 fill=%22%2364748B%22><path fill-rule=%22evenodd%22 d=%22M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z%22 clip-rule=%22evenodd%22/></svg>'); background-position: right 1rem center; background-repeat: no-repeat; background-size: 1.25rem;">
+              <select name="service" required class="w-full px-4 py-3.5 rounded-xl border border-border bg-surface text-heading text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all duration-200 appearance-none" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 20 20%22 fill=%22%2364748B%22><path fill-rule=%22evenodd%22 d=%22M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z%22 clip-rule=%22evenodd%22/></svg>');background-position:right 1rem center;background-repeat:no-repeat;background-size:1.25rem;">
                 <option value="" disabled selected data-i18n="contact.form.service.ph">Select a service area...</option>
-                <option value="software" data-i18n="contact.form.service.o1">Custom Software Development</option>
-                <option value="devops" data-i18n="contact.form.service.o2">Cloud & DevOps</option>
-                <option value="architecture" data-i18n="contact.form.service.o3">Architecture & Strategy</option>
-                <option value="augmentation" data-i18n="contact.form.service.o4">Team Augmentation</option>
-                <option value="audit" data-i18n="contact.form.service.o5">Code Audits & Reviews</option>
-                <option value="data" data-i18n="contact.form.service.o6">Data & Analytics</option>
-                <option value="other" data-i18n="contact.form.service.o7">Other</option>
+                <option value="software"      data-i18n="contact.form.service.o1">Custom Software Development</option>
+                <option value="devops"        data-i18n="contact.form.service.o2">Cloud & DevOps</option>
+                <option value="architecture"  data-i18n="contact.form.service.o3">Architecture & Strategy</option>
+                <option value="augmentation"  data-i18n="contact.form.service.o4">Team Augmentation</option>
+                <option value="audit"         data-i18n="contact.form.service.o5">Code Audits & Reviews</option>
+                <option value="data"          data-i18n="contact.form.service.o6">Data & Analytics</option>
+                <option value="other"         data-i18n="contact.form.service.o7">Other</option>
               </select>
             </div>
             <div class="mb-8">
               <label class="block text-sm font-medium text-heading mb-2" data-i18n="contact.form.message">Project Details</label>
-              <textarea name="message" rows="5" required
-                class="w-full px-4 py-3.5 rounded-xl border border-border bg-surface text-heading placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all duration-200 resize-none"
-                data-i18n-placeholder="contact.form.message.ph" placeholder="Tell us about your project, timeline, and any technical requirements..."></textarea>
+              <textarea name="message" rows="5" required class="w-full px-4 py-3.5 rounded-xl border border-border bg-surface text-heading placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all duration-200 resize-none" data-i18n-placeholder="contact.form.message.ph" placeholder="Tell us about your project, timeline, and any technical requirements..."></textarea>
             </div>
-            <button type="submit"
-              class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 bg-accent hover:bg-accent-dark text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-0.5 text-base"
-              data-i18n="contact.form.submit">
+            <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 bg-accent hover:bg-accent-dark text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-0.5 text-base" data-i18n="contact.form.submit">
               Send Message
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </button>
@@ -584,17 +595,17 @@
   </section>
 
 
-  <!-- ============================================================
+  <!-- ================================================================
        FOOTER
-       ============================================================ -->
+       ================================================================ -->
   <footer class="bg-navy border-t border-white/5">
     <div class="max-w-7xl mx-auto px-5 sm:px-8 py-16">
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
         <!-- Brand -->
         <div class="sm:col-span-2 lg:col-span-1">
-          <a href="#" class="inline-flex items-center gap-0 mb-4">
-            <span class="text-2xl font-extrabold tracking-tight text-white">Montre</span>
-            <span class="text-2xl font-extrabold tracking-tight gradient-text">bo</span>
+          <a href="#" class="inline-flex items-center gap-3 mb-5">
+            <img src="logo.png" alt="Montrebo" class="w-8 h-8 flex-shrink-0 object-contain">
+            <span class="text-xl font-extrabold tracking-tight"><span class="text-white">Montre</span><span class="gradient-text">bo</span></span>
           </a>
           <p class="text-sm text-slate-500 leading-relaxed max-w-xs" data-i18n="footer.tagline">Enterprise technology consulting. Engineering the systems that power your growth.</p>
         </div>
@@ -614,10 +625,10 @@
         <div>
           <h4 class="text-sm font-semibold text-white mb-4" data-i18n="footer.company">Company</h4>
           <ul class="space-y-2.5">
-            <li><a href="#about" class="text-sm text-slate-500 hover:text-slate-300 transition-colors" data-i18n="nav.about">About</a></li>
+            <li><a href="#about"    class="text-sm text-slate-500 hover:text-slate-300 transition-colors" data-i18n="nav.about">About</a></li>
             <li><a href="#services" class="text-sm text-slate-500 hover:text-slate-300 transition-colors" data-i18n="nav.services">Services</a></li>
-            <li><a href="#tech" class="text-sm text-slate-500 hover:text-slate-300 transition-colors" data-i18n="nav.technologies">Technologies</a></li>
-            <li><a href="#contact" class="text-sm text-slate-500 hover:text-slate-300 transition-colors" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="#tech"     class="text-sm text-slate-500 hover:text-slate-300 transition-colors" data-i18n="nav.technologies">Technologies</a></li>
+            <li><a href="#contact"  class="text-sm text-slate-500 hover:text-slate-300 transition-colors" data-i18n="nav.contact">Contact</a></li>
           </ul>
         </div>
 
@@ -631,7 +642,6 @@
         </div>
       </div>
 
-      <!-- Bottom bar -->
       <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p class="text-sm text-slate-600">&copy; 2026 Montrebo. <span data-i18n="footer.rights">All rights reserved.</span></p>
         <div class="flex items-center gap-6">
@@ -643,467 +653,236 @@
   </footer>
 
 
-  <!-- ============================================================
+  <!-- ================================================================
        JAVASCRIPT
-       ============================================================ -->
+       ================================================================ -->
   <script>
-  /* ---------------------------------------------------------------
-     i18n — Translations dictionary
-     --------------------------------------------------------------- */
+  /* -----------------------------------------------------------------
+     i18n — Full translation dictionary (EN, ES, PT, FR, DE)
+     ----------------------------------------------------------------- */
   const translations = {
     en: {
-      "nav.services": "Services",
-      "nav.technologies": "Technologies",
-      "nav.about": "About",
-      "nav.contact": "Contact",
-      "nav.cta": "Get in Touch",
-      "hero.badge": "Enterprise Technology Consulting",
-      "hero.title1": "Engineering the Systems That ",
-      "hero.title2": "Power Your Growth",
-      "hero.subtitle": "We partner with ambitious companies to architect, build, and scale the technology that drives measurable business outcomes. From cloud infrastructure to custom platforms, we deliver engineering excellence.",
-      "hero.cta1": "Start a Conversation",
-      "hero.cta2": "Explore Our Services",
-      "hero.trust1": "AWS & Azure Certified",
-      "hero.trust2": "10+ Years of Delivery",
-      "hero.trust3": "Remote-First, Global Reach",
-      "services.label": "What We Do",
-      "services.title": "End-to-End Technology Services",
-      "services.subtitle": "We cover the full spectrum of modern software consulting, from initial architecture to production operations.",
-      "services.s1.title": "Custom Software Development",
-      "services.s1.desc": "Purpose-built applications engineered for your business logic. We ship production-ready platforms using Ruby on Rails, Python, and modern JavaScript -- built to scale from day one.",
-      "services.s2.title": "Cloud & DevOps",
-      "services.s2.desc": "Infrastructure as code, automated CI/CD pipelines, containerization, and cloud-native architecture on AWS and Azure. We make your deployments reliable, repeatable, and fast.",
-      "services.s3.title": "Architecture & Strategy",
-      "services.s3.desc": "Technical due diligence, system design reviews, and migration roadmaps. We help you make architectural decisions that reduce risk and align with long-term business goals.",
-      "services.s4.title": "Team Augmentation",
-      "services.s4.desc": "Embed senior engineers directly into your team. We accelerate delivery, mentor your developers, and transfer knowledge -- so you keep the expertise long after we leave.",
-      "services.s5.title": "Code Audits & Reviews",
-      "services.s5.desc": "In-depth code quality assessments, security audits, and performance profiling. We identify technical debt, vulnerabilities, and bottlenecks before they become incidents.",
-      "services.s6.title": "Data & Analytics",
-      "services.s6.desc": "Data pipeline engineering, API integrations, and analytics platforms. We build the data infrastructure that turns raw information into actionable business intelligence.",
-      "tech.label": "Our Stack",
-      "tech.title": "Technologies We Master",
-      "tech.subtitle": "Deep, production-proven expertise across the modern technology landscape.",
-      "about.label": "Why Us",
-      "about.title": "Built for Engineering Excellence",
-      "about.subtitle": "We don't just write code. We architect solutions that drive revenue, reduce operational costs, and position your technology as a competitive advantage.",
-      "about.stat1": "Projects Delivered",
-      "about.stat2": "Years of Delivery",
-      "about.stat3": "Uptime SLA Achieved",
-      "about.stat4": "Enterprise Clients",
-      "about.v1.title": "Clean Code, Always",
-      "about.v1.desc": "Every line we write is tested, reviewed, and documented. We build systems designed for the engineers who come after us -- because maintainability is not optional, it's foundational.",
-      "about.v2.title": "Honest Communication",
-      "about.v2.desc": "No vanity metrics, no sugar-coating. We give you direct, technical feedback and transparent timelines. If something won't work, you'll hear it from us first.",
-      "about.v3.title": "Long-Term Partnership",
-      "about.v3.desc": "We measure success by the value we create over years, not sprints. Most of our clients become long-term partners because we treat their technology as if it were our own.",
-      "contact.label": "Contact",
-      "contact.title": "Let's Build Something Together",
-      "contact.subtitle": "Tell us about your challenge. We'll respond within 24 hours with an honest assessment of how we can help.",
-      "contact.info.title": "Start the Conversation",
-      "contact.info.desc": "Whether you need a full engineering team or a second opinion on your architecture, we're here to help. No commitment, no sales pitch -- just a technical conversation about your goals.",
-      "contact.info.email.label": "Email",
-      "contact.info.location.label": "Location",
-      "contact.info.location.value": "Remote-first, worldwide",
-      "contact.info.response.label": "Response Time",
-      "contact.info.response.value": "Within 24 hours",
-      "contact.form.name": "Full Name",
-      "contact.form.name.ph": "John Smith",
-      "contact.form.email": "Work Email",
-      "contact.form.email.ph": "john@company.com",
-      "contact.form.company": "Company",
-      "contact.form.company.ph": "Your company name",
-      "contact.form.service": "How Can We Help?",
-      "contact.form.service.ph": "Select a service area...",
-      "contact.form.service.o1": "Custom Software Development",
-      "contact.form.service.o2": "Cloud & DevOps",
-      "contact.form.service.o3": "Architecture & Strategy",
-      "contact.form.service.o4": "Team Augmentation",
-      "contact.form.service.o5": "Code Audits & Reviews",
-      "contact.form.service.o6": "Data & Analytics",
-      "contact.form.service.o7": "Other",
-      "contact.form.message": "Project Details",
-      "contact.form.message.ph": "Tell us about your project, timeline, and any technical requirements...",
-      "contact.form.submit": "Send Message",
-      "contact.success.title": "Message Sent Successfully",
-      "contact.success.desc": "Thank you for reaching out. A member of our team will get back to you within 24 hours.",
-      "footer.tagline": "Enterprise technology consulting. Engineering the systems that power your growth.",
-      "footer.services": "Services",
-      "footer.company": "Company",
-      "footer.rights": "All rights reserved.",
-      "footer.privacy": "Privacy Policy",
-      "footer.terms": "Terms of Service",
+      "nav.services":"Services","nav.technologies":"Technologies","nav.about":"About","nav.contact":"Contact","nav.cta":"Get in Touch",
+      "hero.badge":"Enterprise Technology Consulting",
+      "hero.title1":"Strategic Growth, ","hero.title2":"Engineered to Last",
+      "hero.subtitle":"We partner with ambitious companies to architect, build, and scale the technology platforms that drive measurable business outcomes. Deep expertise. Proven results. Long-term value.",
+      "hero.cta1":"Start a Conversation","hero.cta2":"Explore Our Services",
+      "hero.trust1":"AWS & Azure Certified","hero.trust2":"10+ Years of Delivery","hero.trust3":"Remote-First, Global Reach",
+      "services.label":"What We Do","services.title":"End-to-End Technology Services",
+      "services.subtitle":"We cover the full spectrum of modern software consulting -- from initial architecture through production operations and beyond.",
+      "services.s1.title":"Custom Software Development","services.s1.desc":"Purpose-built applications engineered for your business logic. We ship production-ready platforms using Ruby on Rails, Python, and modern JavaScript -- architected to scale from day one.",
+      "services.s2.title":"Cloud & DevOps","services.s2.desc":"Infrastructure as code, automated CI/CD pipelines, containerization, and cloud-native architecture on AWS and Azure. We make your deployments reliable, repeatable, and fast.",
+      "services.s3.title":"Architecture & Strategy","services.s3.desc":"Technical due diligence, system design reviews, and migration roadmaps. We help you make architectural decisions that reduce risk and align technology with long-term business goals.",
+      "services.s4.title":"Team Augmentation","services.s4.desc":"Embed senior engineers directly into your team. We accelerate delivery, mentor your developers, and transfer knowledge -- so you retain the expertise long after we leave.",
+      "services.s5.title":"Code Audits & Reviews","services.s5.desc":"In-depth code quality assessments, security audits, and performance profiling. We identify technical debt, vulnerabilities, and bottlenecks before they become production incidents.",
+      "services.s6.title":"Data & Analytics","services.s6.desc":"Data pipeline engineering, API integrations, and analytics platforms. We build the data infrastructure that transforms raw information into actionable business intelligence.",
+      "tech.label":"Our Stack","tech.title":"Technologies We Master","tech.subtitle":"Deep, production-proven expertise across the modern technology landscape.",
+      "about.label":"Why Us","about.title":"Built for Engineering Excellence",
+      "about.subtitle":"We don't just write code. We architect solutions that drive revenue, reduce operational costs, and position your technology as a lasting competitive advantage.",
+      "about.stat1":"Projects Delivered","about.stat2":"Years of Delivery","about.stat3":"Uptime SLA Achieved","about.stat4":"Enterprise Clients",
+      "about.v1.title":"Clean Code, Always","about.v1.desc":"Every line we write is tested, reviewed, and documented. We build systems designed for the engineers who come after us -- because maintainability is not optional, it's foundational.",
+      "about.v2.title":"Honest Communication","about.v2.desc":"No vanity metrics, no sugar-coating. We give you direct, technical feedback and transparent timelines. If something won't work, you'll hear it from us first.",
+      "about.v3.title":"Long-Term Partnership","about.v3.desc":"We measure success by the value we create over years, not sprints. Most of our clients become long-term partners because we treat their technology as if it were our own.",
+      "contact.label":"Contact","contact.title":"Let's Build Something Together",
+      "contact.subtitle":"Tell us about your challenge. We'll respond within 24 hours with an honest assessment of how we can help.",
+      "contact.info.title":"Start the Conversation","contact.info.desc":"Whether you need a full engineering team or a second opinion on your architecture, we're here to help. No commitment, no sales pitch -- just a technical conversation about your goals.",
+      "contact.info.email.label":"Email","contact.info.location.label":"Location","contact.info.location.value":"Remote-first, worldwide",
+      "contact.info.response.label":"Response Time","contact.info.response.value":"Within 24 hours",
+      "contact.form.name":"Full Name","contact.form.name.ph":"John Smith",
+      "contact.form.email":"Work Email","contact.form.email.ph":"john@company.com",
+      "contact.form.company":"Company","contact.form.company.ph":"Your company name",
+      "contact.form.service":"How Can We Help?","contact.form.service.ph":"Select a service area...",
+      "contact.form.service.o1":"Custom Software Development","contact.form.service.o2":"Cloud & DevOps","contact.form.service.o3":"Architecture & Strategy",
+      "contact.form.service.o4":"Team Augmentation","contact.form.service.o5":"Code Audits & Reviews","contact.form.service.o6":"Data & Analytics","contact.form.service.o7":"Other",
+      "contact.form.message":"Project Details","contact.form.message.ph":"Tell us about your project, timeline, and any technical requirements...",
+      "contact.form.submit":"Send Message",
+      "contact.success.title":"Message Sent Successfully","contact.success.desc":"Thank you for reaching out. A member of our team will get back to you within 24 hours.",
+      "footer.tagline":"Enterprise technology consulting. Engineering the systems that power your growth.",
+      "footer.services":"Services","footer.company":"Company","footer.rights":"All rights reserved.","footer.privacy":"Privacy Policy","footer.terms":"Terms of Service",
     },
     es: {
-      "nav.services": "Servicios",
-      "nav.technologies": "Tecnologias",
-      "nav.about": "Nosotros",
-      "nav.contact": "Contacto",
-      "nav.cta": "Contactanos",
-      "hero.badge": "Consultoria Tecnologica Empresarial",
-      "hero.title1": "Construimos los Sistemas que ",
-      "hero.title2": "Impulsan tu Crecimiento",
-      "hero.subtitle": "Nos asociamos con empresas ambiciosas para disenar, construir y escalar la tecnologia que genera resultados de negocio medibles. Desde infraestructura cloud hasta plataformas a medida, entregamos excelencia en ingenieria.",
-      "hero.cta1": "Iniciar una Conversacion",
-      "hero.cta2": "Explorar Servicios",
-      "hero.trust1": "Certificados AWS y Azure",
-      "hero.trust2": "10+ Anos de Experiencia",
-      "hero.trust3": "Remote-First, Alcance Global",
-      "services.label": "Lo Que Hacemos",
-      "services.title": "Servicios Tecnologicos Integrales",
-      "services.subtitle": "Cubrimos el espectro completo de consultoria de software moderna, desde la arquitectura inicial hasta las operaciones en produccion.",
-      "services.s1.title": "Desarrollo de Software a Medida",
-      "services.s1.desc": "Aplicaciones construidas para tu logica de negocio. Entregamos plataformas listas para produccion con Ruby on Rails, Python y JavaScript moderno, disenadas para escalar desde el primer dia.",
-      "services.s2.title": "Cloud y DevOps",
-      "services.s2.desc": "Infraestructura como codigo, pipelines CI/CD automatizados, contenedorizacion y arquitectura cloud-native en AWS y Azure. Hacemos tus despliegues confiables, repetibles y rapidos.",
-      "services.s3.title": "Arquitectura y Estrategia",
-      "services.s3.desc": "Due diligence tecnico, revisiones de diseno de sistemas y hojas de ruta de migracion. Te ayudamos a tomar decisiones arquitectonicas que reducen riesgo y se alinean con objetivos de negocio.",
-      "services.s4.title": "Ampliacion de Equipo",
-      "services.s4.desc": "Integramos ingenieros senior directamente en tu equipo. Aceleramos la entrega, mentorizamos a tus desarrolladores y transferimos conocimiento para que conserves la experiencia.",
-      "services.s5.title": "Auditorias y Revisiones de Codigo",
-      "services.s5.desc": "Evaluaciones profundas de calidad de codigo, auditorias de seguridad y analisis de rendimiento. Identificamos deuda tecnica, vulnerabilidades y cuellos de botella antes de que se conviertan en incidentes.",
-      "services.s6.title": "Datos y Analitica",
-      "services.s6.desc": "Ingenieria de pipelines de datos, integraciones API y plataformas de analitica. Construimos la infraestructura de datos que convierte informacion en inteligencia de negocio accionable.",
-      "tech.label": "Nuestro Stack",
-      "tech.title": "Tecnologias que Dominamos",
-      "tech.subtitle": "Experiencia profunda y probada en produccion a traves del panorama tecnologico moderno.",
-      "about.label": "Por Que Nosotros",
-      "about.title": "Construidos para la Excelencia en Ingenieria",
-      "about.subtitle": "No solo escribimos codigo. Arquitectamos soluciones que impulsan ingresos, reducen costos operativos y posicionan tu tecnologia como ventaja competitiva.",
-      "about.stat1": "Proyectos Entregados",
-      "about.stat2": "Anos de Experiencia",
-      "about.stat3": "SLA de Uptime Alcanzado",
-      "about.stat4": "Clientes Empresariales",
-      "about.v1.title": "Codigo Limpio, Siempre",
-      "about.v1.desc": "Cada linea que escribimos esta testeada, revisada y documentada. Construimos sistemas disenados para los ingenieros que vienen despues, porque la mantenibilidad no es opcional, es fundamental.",
-      "about.v2.title": "Comunicacion Honesta",
-      "about.v2.desc": "Sin metricas de vanidad, sin endulzar la realidad. Te damos feedback tecnico directo y timelines transparentes. Si algo no va a funcionar, lo sabras primero por nosotros.",
-      "about.v3.title": "Partnership a Largo Plazo",
-      "about.v3.desc": "Medimos el exito por el valor que creamos a lo largo de anos, no sprints. La mayoria de nuestros clientes se convierten en socios a largo plazo porque tratamos su tecnologia como si fuera nuestra.",
-      "contact.label": "Contacto",
-      "contact.title": "Construyamos Algo Juntos",
-      "contact.subtitle": "Cuentanos tu desafio. Responderemos en 24 horas con una evaluacion honesta de como podemos ayudar.",
-      "contact.info.title": "Inicia la Conversacion",
-      "contact.info.desc": "Ya sea que necesites un equipo completo de ingenieria o una segunda opinion sobre tu arquitectura, estamos aqui para ayudar. Sin compromiso, sin pitch de ventas, solo una conversacion tecnica sobre tus objetivos.",
-      "contact.info.email.label": "Email",
-      "contact.info.location.label": "Ubicacion",
-      "contact.info.location.value": "Remote-first, alcance mundial",
-      "contact.info.response.label": "Tiempo de Respuesta",
-      "contact.info.response.value": "Dentro de 24 horas",
-      "contact.form.name": "Nombre Completo",
-      "contact.form.name.ph": "Juan Garcia",
-      "contact.form.email": "Email de Trabajo",
-      "contact.form.email.ph": "juan@empresa.com",
-      "contact.form.company": "Empresa",
-      "contact.form.company.ph": "Nombre de tu empresa",
-      "contact.form.service": "Como Podemos Ayudar?",
-      "contact.form.service.ph": "Selecciona un area de servicio...",
-      "contact.form.service.o1": "Desarrollo de Software a Medida",
-      "contact.form.service.o2": "Cloud y DevOps",
-      "contact.form.service.o3": "Arquitectura y Estrategia",
-      "contact.form.service.o4": "Ampliacion de Equipo",
-      "contact.form.service.o5": "Auditorias y Revisiones de Codigo",
-      "contact.form.service.o6": "Datos y Analitica",
-      "contact.form.service.o7": "Otro",
-      "contact.form.message": "Detalles del Proyecto",
-      "contact.form.message.ph": "Cuentanos sobre tu proyecto, timeline y cualquier requisito tecnico...",
-      "contact.form.submit": "Enviar Mensaje",
-      "contact.success.title": "Mensaje Enviado con Exito",
-      "contact.success.desc": "Gracias por contactarnos. Un miembro de nuestro equipo se pondra en contacto contigo en 24 horas.",
-      "footer.tagline": "Consultoria tecnologica empresarial. Construimos los sistemas que impulsan tu crecimiento.",
-      "footer.services": "Servicios",
-      "footer.company": "Empresa",
-      "footer.rights": "Todos los derechos reservados.",
-      "footer.privacy": "Politica de Privacidad",
-      "footer.terms": "Terminos de Servicio",
+      "nav.services":"Servicios","nav.technologies":"Tecnologias","nav.about":"Nosotros","nav.contact":"Contacto","nav.cta":"Contactanos",
+      "hero.badge":"Consultoria Tecnologica Empresarial",
+      "hero.title1":"Crecimiento Estrategico, ","hero.title2":"Ingenieria que Perdura",
+      "hero.subtitle":"Nos asociamos con empresas ambiciosas para disenar, construir y escalar las plataformas tecnologicas que generan resultados de negocio medibles. Experiencia profunda. Resultados probados. Valor a largo plazo.",
+      "hero.cta1":"Iniciar una Conversacion","hero.cta2":"Explorar Servicios",
+      "hero.trust1":"Certificados AWS y Azure","hero.trust2":"10+ Anos de Experiencia","hero.trust3":"Remote-First, Alcance Global",
+      "services.label":"Lo Que Hacemos","services.title":"Servicios Tecnologicos Integrales",
+      "services.subtitle":"Cubrimos el espectro completo de consultoria de software moderna, desde la arquitectura inicial hasta las operaciones en produccion.",
+      "services.s1.title":"Desarrollo de Software a Medida","services.s1.desc":"Aplicaciones construidas para tu logica de negocio. Entregamos plataformas listas para produccion con Ruby on Rails, Python y JavaScript moderno, disenadas para escalar desde el primer dia.",
+      "services.s2.title":"Cloud y DevOps","services.s2.desc":"Infraestructura como codigo, pipelines CI/CD automatizados, contenedorizacion y arquitectura cloud-native en AWS y Azure. Hacemos tus despliegues confiables, repetibles y rapidos.",
+      "services.s3.title":"Arquitectura y Estrategia","services.s3.desc":"Due diligence tecnico, revisiones de diseno de sistemas y hojas de ruta de migracion. Te ayudamos a tomar decisiones arquitectonicas que reducen riesgo y se alinean con objetivos de negocio.",
+      "services.s4.title":"Ampliacion de Equipo","services.s4.desc":"Integramos ingenieros senior directamente en tu equipo. Aceleramos la entrega, mentorizamos a tus desarrolladores y transferimos conocimiento para que conserves la experiencia.",
+      "services.s5.title":"Auditorias y Revisiones de Codigo","services.s5.desc":"Evaluaciones profundas de calidad de codigo, auditorias de seguridad y analisis de rendimiento. Identificamos deuda tecnica, vulnerabilidades y cuellos de botella antes de que se conviertan en incidentes.",
+      "services.s6.title":"Datos y Analitica","services.s6.desc":"Ingenieria de pipelines de datos, integraciones API y plataformas de analitica. Construimos la infraestructura de datos que convierte informacion en inteligencia de negocio accionable.",
+      "tech.label":"Nuestro Stack","tech.title":"Tecnologias que Dominamos","tech.subtitle":"Experiencia profunda y probada en produccion a traves del panorama tecnologico moderno.",
+      "about.label":"Por Que Nosotros","about.title":"Construidos para la Excelencia en Ingenieria",
+      "about.subtitle":"No solo escribimos codigo. Arquitectamos soluciones que impulsan ingresos, reducen costos operativos y posicionan tu tecnologia como ventaja competitiva duradera.",
+      "about.stat1":"Proyectos Entregados","about.stat2":"Anos de Experiencia","about.stat3":"SLA de Uptime Alcanzado","about.stat4":"Clientes Empresariales",
+      "about.v1.title":"Codigo Limpio, Siempre","about.v1.desc":"Cada linea que escribimos esta testeada, revisada y documentada. Construimos sistemas disenados para los ingenieros que vienen despues, porque la mantenibilidad no es opcional, es fundamental.",
+      "about.v2.title":"Comunicacion Honesta","about.v2.desc":"Sin metricas de vanidad, sin endulzar la realidad. Te damos feedback tecnico directo y timelines transparentes. Si algo no va a funcionar, lo sabras primero por nosotros.",
+      "about.v3.title":"Partnership a Largo Plazo","about.v3.desc":"Medimos el exito por el valor que creamos a lo largo de anos, no sprints. La mayoria de nuestros clientes se convierten en socios a largo plazo porque tratamos su tecnologia como si fuera nuestra.",
+      "contact.label":"Contacto","contact.title":"Construyamos Algo Juntos",
+      "contact.subtitle":"Cuentanos tu desafio. Responderemos en 24 horas con una evaluacion honesta de como podemos ayudar.",
+      "contact.info.title":"Inicia la Conversacion","contact.info.desc":"Ya sea que necesites un equipo completo de ingenieria o una segunda opinion sobre tu arquitectura, estamos aqui para ayudar. Sin compromiso, sin pitch de ventas, solo una conversacion tecnica sobre tus objetivos.",
+      "contact.info.email.label":"Email","contact.info.location.label":"Ubicacion","contact.info.location.value":"Remote-first, alcance mundial",
+      "contact.info.response.label":"Tiempo de Respuesta","contact.info.response.value":"Dentro de 24 horas",
+      "contact.form.name":"Nombre Completo","contact.form.name.ph":"Juan Garcia",
+      "contact.form.email":"Email de Trabajo","contact.form.email.ph":"juan@empresa.com",
+      "contact.form.company":"Empresa","contact.form.company.ph":"Nombre de tu empresa",
+      "contact.form.service":"Como Podemos Ayudar?","contact.form.service.ph":"Selecciona un area de servicio...",
+      "contact.form.service.o1":"Desarrollo de Software a Medida","contact.form.service.o2":"Cloud y DevOps","contact.form.service.o3":"Arquitectura y Estrategia",
+      "contact.form.service.o4":"Ampliacion de Equipo","contact.form.service.o5":"Auditorias y Revisiones de Codigo","contact.form.service.o6":"Datos y Analitica","contact.form.service.o7":"Otro",
+      "contact.form.message":"Detalles del Proyecto","contact.form.message.ph":"Cuentanos sobre tu proyecto, timeline y cualquier requisito tecnico...",
+      "contact.form.submit":"Enviar Mensaje",
+      "contact.success.title":"Mensaje Enviado con Exito","contact.success.desc":"Gracias por contactarnos. Un miembro de nuestro equipo se pondra en contacto contigo en 24 horas.",
+      "footer.tagline":"Consultoria tecnologica empresarial. Construimos los sistemas que impulsan tu crecimiento.",
+      "footer.services":"Servicios","footer.company":"Empresa","footer.rights":"Todos los derechos reservados.","footer.privacy":"Politica de Privacidad","footer.terms":"Terminos de Servicio",
     },
     pt: {
-      "nav.services": "Servicos",
-      "nav.technologies": "Tecnologias",
-      "nav.about": "Sobre",
-      "nav.contact": "Contato",
-      "nav.cta": "Fale Conosco",
-      "hero.badge": "Consultoria Tecnologica Empresarial",
-      "hero.title1": "Construimos os Sistemas que ",
-      "hero.title2": "Impulsionam Seu Crescimento",
-      "hero.subtitle": "Nos associamos com empresas ambiciosas para projetar, construir e escalar a tecnologia que gera resultados de negocio mensuraveis. Da infraestrutura cloud a plataformas personalizadas, entregamos excelencia em engenharia.",
-      "hero.cta1": "Iniciar uma Conversa",
-      "hero.cta2": "Explorar Servicos",
-      "hero.trust1": "Certificados AWS e Azure",
-      "hero.trust2": "10+ Anos de Entrega",
-      "hero.trust3": "Remote-First, Alcance Global",
-      "services.label": "O Que Fazemos",
-      "services.title": "Servicos Tecnologicos Completos",
-      "services.subtitle": "Cobrimos todo o espectro da consultoria de software moderna, desde a arquitetura inicial ate as operacoes em producao.",
-      "services.s1.title": "Desenvolvimento de Software Sob Medida",
-      "services.s1.desc": "Aplicacoes construidas para sua logica de negocio. Entregamos plataformas prontas para producao com Ruby on Rails, Python e JavaScript moderno, projetadas para escalar desde o primeiro dia.",
-      "services.s2.title": "Cloud e DevOps",
-      "services.s2.desc": "Infraestrutura como codigo, pipelines CI/CD automatizados, containerizacao e arquitetura cloud-native em AWS e Azure. Tornamos seus deploys confiaveis, repetitivos e rapidos.",
-      "services.s3.title": "Arquitetura e Estrategia",
-      "services.s3.desc": "Due diligence tecnica, revisoes de design de sistemas e roadmaps de migracao. Ajudamos voce a tomar decisoes arquiteturais que reduzem riscos e se alinham com objetivos de longo prazo.",
-      "services.s4.title": "Ampliacao de Equipe",
-      "services.s4.desc": "Integramos engenheiros seniores diretamente em sua equipe. Aceleramos a entrega, mentoramos seus desenvolvedores e transferimos conhecimento para que voce mantenha a expertise.",
-      "services.s5.title": "Auditorias e Revisoes de Codigo",
-      "services.s5.desc": "Avaliacoes aprofundadas de qualidade de codigo, auditorias de seguranca e analise de performance. Identificamos divida tecnica, vulnerabilidades e gargalos antes que se tornem incidentes.",
-      "services.s6.title": "Dados e Analytics",
-      "services.s6.desc": "Engenharia de pipelines de dados, integracoes de API e plataformas de analytics. Construimos a infraestrutura de dados que transforma informacao em inteligencia de negocio acionavel.",
-      "tech.label": "Nosso Stack",
-      "tech.title": "Tecnologias que Dominamos",
-      "tech.subtitle": "Expertise profunda e comprovada em producao em todo o cenario tecnologico moderno.",
-      "about.label": "Por Que Nos",
-      "about.title": "Construidos para Excelencia em Engenharia",
-      "about.subtitle": "Nao apenas escrevemos codigo. Arquitetamos solucoes que impulsionam receita, reduzem custos operacionais e posicionam sua tecnologia como vantagem competitiva.",
-      "about.stat1": "Projetos Entregues",
-      "about.stat2": "Anos de Entrega",
-      "about.stat3": "SLA de Uptime Alcancado",
-      "about.stat4": "Clientes Empresariais",
-      "about.v1.title": "Codigo Limpo, Sempre",
-      "about.v1.desc": "Cada linha que escrevemos e testada, revisada e documentada. Construimos sistemas projetados para os engenheiros que vem depois, porque manutenibilidade nao e opcional, e fundamental.",
-      "about.v2.title": "Comunicacao Honesta",
-      "about.v2.desc": "Sem metricas de vaidade, sem adocar a realidade. Damos feedback tecnico direto e timelines transparentes. Se algo nao vai funcionar, voce sabera primeiro por nos.",
-      "about.v3.title": "Parceria de Longo Prazo",
-      "about.v3.desc": "Medimos o sucesso pelo valor que criamos ao longo de anos, nao sprints. A maioria dos nossos clientes se tornam parceiros de longo prazo porque tratamos sua tecnologia como se fosse nossa.",
-      "contact.label": "Contato",
-      "contact.title": "Vamos Construir Algo Juntos",
-      "contact.subtitle": "Conte-nos seu desafio. Responderemos em 24 horas com uma avaliacao honesta de como podemos ajudar.",
-      "contact.info.title": "Inicie a Conversa",
-      "contact.info.desc": "Se voce precisa de uma equipe completa de engenharia ou de uma segunda opiniao sobre sua arquitetura, estamos aqui para ajudar. Sem compromisso, sem pitch de vendas, apenas uma conversa tecnica sobre seus objetivos.",
-      "contact.info.email.label": "Email",
-      "contact.info.location.label": "Localizacao",
-      "contact.info.location.value": "Remote-first, alcance mundial",
-      "contact.info.response.label": "Tempo de Resposta",
-      "contact.info.response.value": "Dentro de 24 horas",
-      "contact.form.name": "Nome Completo",
-      "contact.form.name.ph": "Joao Silva",
-      "contact.form.email": "Email de Trabalho",
-      "contact.form.email.ph": "joao@empresa.com",
-      "contact.form.company": "Empresa",
-      "contact.form.company.ph": "Nome da sua empresa",
-      "contact.form.service": "Como Podemos Ajudar?",
-      "contact.form.service.ph": "Selecione uma area de servico...",
-      "contact.form.service.o1": "Desenvolvimento de Software Sob Medida",
-      "contact.form.service.o2": "Cloud e DevOps",
-      "contact.form.service.o3": "Arquitetura e Estrategia",
-      "contact.form.service.o4": "Ampliacao de Equipe",
-      "contact.form.service.o5": "Auditorias e Revisoes de Codigo",
-      "contact.form.service.o6": "Dados e Analytics",
-      "contact.form.service.o7": "Outro",
-      "contact.form.message": "Detalhes do Projeto",
-      "contact.form.message.ph": "Conte-nos sobre seu projeto, timeline e quaisquer requisitos tecnicos...",
-      "contact.form.submit": "Enviar Mensagem",
-      "contact.success.title": "Mensagem Enviada com Sucesso",
-      "contact.success.desc": "Obrigado pelo contato. Um membro da nossa equipe entrara em contato em 24 horas.",
-      "footer.tagline": "Consultoria tecnologica empresarial. Construimos os sistemas que impulsionam seu crescimento.",
-      "footer.services": "Servicos",
-      "footer.company": "Empresa",
-      "footer.rights": "Todos os direitos reservados.",
-      "footer.privacy": "Politica de Privacidade",
-      "footer.terms": "Termos de Servico",
+      "nav.services":"Servicos","nav.technologies":"Tecnologias","nav.about":"Sobre","nav.contact":"Contato","nav.cta":"Fale Conosco",
+      "hero.badge":"Consultoria Tecnologica Empresarial",
+      "hero.title1":"Crescimento Estrategico, ","hero.title2":"Engenharia que Dura",
+      "hero.subtitle":"Nos associamos com empresas ambiciosas para projetar, construir e escalar as plataformas tecnologicas que geram resultados de negocio mensuraveis. Expertise profunda. Resultados comprovados. Valor de longo prazo.",
+      "hero.cta1":"Iniciar uma Conversa","hero.cta2":"Explorar Servicos",
+      "hero.trust1":"Certificados AWS e Azure","hero.trust2":"10+ Anos de Entrega","hero.trust3":"Remote-First, Alcance Global",
+      "services.label":"O Que Fazemos","services.title":"Servicos Tecnologicos Completos",
+      "services.subtitle":"Cobrimos todo o espectro da consultoria de software moderna, desde a arquitetura inicial ate as operacoes em producao.",
+      "services.s1.title":"Desenvolvimento de Software Sob Medida","services.s1.desc":"Aplicacoes construidas para sua logica de negocio. Entregamos plataformas prontas para producao com Ruby on Rails, Python e JavaScript moderno, projetadas para escalar desde o primeiro dia.",
+      "services.s2.title":"Cloud e DevOps","services.s2.desc":"Infraestrutura como codigo, pipelines CI/CD automatizados, containerizacao e arquitetura cloud-native em AWS e Azure. Tornamos seus deploys confiaveis, repetitivos e rapidos.",
+      "services.s3.title":"Arquitetura e Estrategia","services.s3.desc":"Due diligence tecnica, revisoes de design de sistemas e roadmaps de migracao. Ajudamos voce a tomar decisoes arquiteturais que reduzem riscos e se alinham com objetivos de longo prazo.",
+      "services.s4.title":"Ampliacao de Equipe","services.s4.desc":"Integramos engenheiros seniores diretamente em sua equipe. Aceleramos a entrega, mentoramos seus desenvolvedores e transferimos conhecimento para que voce mantenha a expertise.",
+      "services.s5.title":"Auditorias e Revisoes de Codigo","services.s5.desc":"Avaliacoes aprofundadas de qualidade de codigo, auditorias de seguranca e analise de performance. Identificamos divida tecnica, vulnerabilidades e gargalos antes que se tornem incidentes.",
+      "services.s6.title":"Dados e Analytics","services.s6.desc":"Engenharia de pipelines de dados, integracoes de API e plataformas de analytics. Construimos a infraestrutura de dados que transforma informacao em inteligencia de negocio acionavel.",
+      "tech.label":"Nosso Stack","tech.title":"Tecnologias que Dominamos","tech.subtitle":"Expertise profunda e comprovada em producao em todo o cenario tecnologico moderno.",
+      "about.label":"Por Que Nos","about.title":"Construidos para Excelencia em Engenharia",
+      "about.subtitle":"Nao apenas escrevemos codigo. Arquitetamos solucoes que impulsionam receita, reduzem custos operacionais e posicionam sua tecnologia como vantagem competitiva duradoura.",
+      "about.stat1":"Projetos Entregues","about.stat2":"Anos de Entrega","about.stat3":"SLA de Uptime Alcancado","about.stat4":"Clientes Empresariais",
+      "about.v1.title":"Codigo Limpo, Sempre","about.v1.desc":"Cada linha que escrevemos e testada, revisada e documentada. Construimos sistemas projetados para os engenheiros que vem depois, porque manutenibilidade nao e opcional, e fundamental.",
+      "about.v2.title":"Comunicacao Honesta","about.v2.desc":"Sem metricas de vaidade, sem adocar a realidade. Damos feedback tecnico direto e timelines transparentes. Se algo nao vai funcionar, voce sabera primeiro por nos.",
+      "about.v3.title":"Parceria de Longo Prazo","about.v3.desc":"Medimos o sucesso pelo valor que criamos ao longo de anos, nao sprints. A maioria dos nossos clientes se tornam parceiros de longo prazo porque tratamos sua tecnologia como se fosse nossa.",
+      "contact.label":"Contato","contact.title":"Vamos Construir Algo Juntos",
+      "contact.subtitle":"Conte-nos seu desafio. Responderemos em 24 horas com uma avaliacao honesta de como podemos ajudar.",
+      "contact.info.title":"Inicie a Conversa","contact.info.desc":"Se voce precisa de uma equipe completa de engenharia ou de uma segunda opiniao sobre sua arquitetura, estamos aqui para ajudar. Sem compromisso, sem pitch de vendas, apenas uma conversa tecnica sobre seus objetivos.",
+      "contact.info.email.label":"Email","contact.info.location.label":"Localizacao","contact.info.location.value":"Remote-first, alcance mundial",
+      "contact.info.response.label":"Tempo de Resposta","contact.info.response.value":"Dentro de 24 horas",
+      "contact.form.name":"Nome Completo","contact.form.name.ph":"Joao Silva",
+      "contact.form.email":"Email de Trabalho","contact.form.email.ph":"joao@empresa.com",
+      "contact.form.company":"Empresa","contact.form.company.ph":"Nome da sua empresa",
+      "contact.form.service":"Como Podemos Ajudar?","contact.form.service.ph":"Selecione uma area de servico...",
+      "contact.form.service.o1":"Desenvolvimento de Software Sob Medida","contact.form.service.o2":"Cloud e DevOps","contact.form.service.o3":"Arquitetura e Estrategia",
+      "contact.form.service.o4":"Ampliacao de Equipe","contact.form.service.o5":"Auditorias e Revisoes de Codigo","contact.form.service.o6":"Dados e Analytics","contact.form.service.o7":"Outro",
+      "contact.form.message":"Detalhes do Projeto","contact.form.message.ph":"Conte-nos sobre seu projeto, timeline e quaisquer requisitos tecnicos...",
+      "contact.form.submit":"Enviar Mensagem",
+      "contact.success.title":"Mensagem Enviada com Sucesso","contact.success.desc":"Obrigado pelo contato. Um membro da nossa equipe entrara em contato em 24 horas.",
+      "footer.tagline":"Consultoria tecnologica empresarial. Construimos os sistemas que impulsionam seu crescimento.",
+      "footer.services":"Servicos","footer.company":"Empresa","footer.rights":"Todos os direitos reservados.","footer.privacy":"Politica de Privacidade","footer.terms":"Termos de Servico",
     },
     fr: {
-      "nav.services": "Services",
-      "nav.technologies": "Technologies",
-      "nav.about": "A Propos",
-      "nav.contact": "Contact",
-      "nav.cta": "Nous Contacter",
-      "hero.badge": "Conseil Technologique d'Entreprise",
-      "hero.title1": "Nous Construisons les Systemes qui ",
-      "hero.title2": "Propulsent Votre Croissance",
-      "hero.subtitle": "Nous nous associons a des entreprises ambitieuses pour concevoir, construire et faire evoluer la technologie qui genere des resultats commerciaux mesurables. De l'infrastructure cloud aux plateformes sur mesure, nous offrons l'excellence en ingenierie.",
-      "hero.cta1": "Demarrer une Conversation",
-      "hero.cta2": "Explorer Nos Services",
-      "hero.trust1": "Certifies AWS et Azure",
-      "hero.trust2": "10+ Ans d'Experience",
-      "hero.trust3": "Remote-First, Portee Mondiale",
-      "services.label": "Ce Que Nous Faisons",
-      "services.title": "Services Technologiques de Bout en Bout",
-      "services.subtitle": "Nous couvrons l'ensemble du spectre du conseil en logiciel moderne, de l'architecture initiale aux operations en production.",
-      "services.s1.title": "Developpement Logiciel Sur Mesure",
-      "services.s1.desc": "Applications construites pour votre logique metier. Nous livrons des plateformes pretes pour la production avec Ruby on Rails, Python et JavaScript moderne, concues pour evoluer des le premier jour.",
-      "services.s2.title": "Cloud et DevOps",
-      "services.s2.desc": "Infrastructure as code, pipelines CI/CD automatises, containerisation et architecture cloud-native sur AWS et Azure. Nous rendons vos deployments fiables, reproductibles et rapides.",
-      "services.s3.title": "Architecture et Strategie",
-      "services.s3.desc": "Due diligence technique, revues de conception de systemes et feuilles de route de migration. Nous vous aidons a prendre des decisions architecturales qui reduisent les risques et s'alignent sur vos objectifs.",
-      "services.s4.title": "Renforcement d'Equipe",
-      "services.s4.desc": "Integrez des ingenieurs seniors directement dans votre equipe. Nous accelerons la livraison, mentorons vos developpeurs et transferons les connaissances pour que vous gardiez l'expertise.",
-      "services.s5.title": "Audits et Revues de Code",
-      "services.s5.desc": "Evaluations approfondies de la qualite du code, audits de securite et profilage de performance. Nous identifions la dette technique, les vulnerabilites et les goulots d'etranglement avant qu'ils ne deviennent des incidents.",
-      "services.s6.title": "Donnees et Analytique",
-      "services.s6.desc": "Ingenierie de pipelines de donnees, integrations API et plateformes d'analytique. Nous construisons l'infrastructure de donnees qui transforme l'information en intelligence commerciale actionnable.",
-      "tech.label": "Notre Stack",
-      "tech.title": "Technologies que Nous Maitrisons",
-      "tech.subtitle": "Expertise approfondie et eprouvee en production a travers le paysage technologique moderne.",
-      "about.label": "Pourquoi Nous",
-      "about.title": "Batis pour l'Excellence en Ingenierie",
-      "about.subtitle": "Nous n'ecrivons pas simplement du code. Nous architectons des solutions qui generent du revenu, reduisent les couts operationnels et positionnent votre technologie comme avantage concurrentiel.",
-      "about.stat1": "Projets Livres",
-      "about.stat2": "Annees d'Experience",
-      "about.stat3": "SLA Uptime Atteint",
-      "about.stat4": "Clients Entreprise",
-      "about.v1.title": "Code Propre, Toujours",
-      "about.v1.desc": "Chaque ligne que nous ecrivons est testee, revue et documentee. Nous construisons des systemes concus pour les ingenieurs qui viendront apres nous, car la maintenabilite n'est pas optionnelle, elle est fondamentale.",
-      "about.v2.title": "Communication Honnete",
-      "about.v2.desc": "Pas de metriques de vanite, pas d'enjolivement. Nous vous donnons un feedback technique direct et des delais transparents. Si quelque chose ne va pas fonctionner, vous l'apprendrez de nous en premier.",
-      "about.v3.title": "Partenariat a Long Terme",
-      "about.v3.desc": "Nous mesurons le succes par la valeur que nous creons sur des annees, pas des sprints. La plupart de nos clients deviennent des partenaires de long terme parce que nous traitons leur technologie comme la notre.",
-      "contact.label": "Contact",
-      "contact.title": "Construisons Quelque Chose Ensemble",
-      "contact.subtitle": "Parlez-nous de votre defi. Nous repondrons sous 24 heures avec une evaluation honnete de la facon dont nous pouvons vous aider.",
-      "contact.info.title": "Demarrez la Conversation",
-      "contact.info.desc": "Que vous ayez besoin d'une equipe d'ingenierie complete ou d'un deuxieme avis sur votre architecture, nous sommes la pour vous aider. Sans engagement, sans pitch commercial -- juste une conversation technique sur vos objectifs.",
-      "contact.info.email.label": "Email",
-      "contact.info.location.label": "Localisation",
-      "contact.info.location.value": "Remote-first, portee mondiale",
-      "contact.info.response.label": "Temps de Reponse",
-      "contact.info.response.value": "Sous 24 heures",
-      "contact.form.name": "Nom Complet",
-      "contact.form.name.ph": "Jean Dupont",
-      "contact.form.email": "Email Professionnel",
-      "contact.form.email.ph": "jean@entreprise.com",
-      "contact.form.company": "Entreprise",
-      "contact.form.company.ph": "Nom de votre entreprise",
-      "contact.form.service": "Comment Pouvons-Nous Aider?",
-      "contact.form.service.ph": "Selectionnez un domaine de service...",
-      "contact.form.service.o1": "Developpement Logiciel Sur Mesure",
-      "contact.form.service.o2": "Cloud et DevOps",
-      "contact.form.service.o3": "Architecture et Strategie",
-      "contact.form.service.o4": "Renforcement d'Equipe",
-      "contact.form.service.o5": "Audits et Revues de Code",
-      "contact.form.service.o6": "Donnees et Analytique",
-      "contact.form.service.o7": "Autre",
-      "contact.form.message": "Details du Projet",
-      "contact.form.message.ph": "Parlez-nous de votre projet, calendrier et exigences techniques...",
-      "contact.form.submit": "Envoyer le Message",
-      "contact.success.title": "Message Envoye avec Succes",
-      "contact.success.desc": "Merci de nous avoir contactes. Un membre de notre equipe vous repondra sous 24 heures.",
-      "footer.tagline": "Conseil technologique d'entreprise. Nous construisons les systemes qui propulsent votre croissance.",
-      "footer.services": "Services",
-      "footer.company": "Entreprise",
-      "footer.rights": "Tous droits reserves.",
-      "footer.privacy": "Politique de Confidentialite",
-      "footer.terms": "Conditions d'Utilisation",
+      "nav.services":"Services","nav.technologies":"Technologies","nav.about":"A Propos","nav.contact":"Contact","nav.cta":"Nous Contacter",
+      "hero.badge":"Conseil Technologique d'Entreprise",
+      "hero.title1":"Croissance Strategique, ","hero.title2":"Ingenierie Durable",
+      "hero.subtitle":"Nous nous associons a des entreprises ambitieuses pour concevoir, construire et faire evoluer les plateformes technologiques qui generent des resultats commerciaux mesurables. Expertise approfondie. Resultats prouves. Valeur durable.",
+      "hero.cta1":"Demarrer une Conversation","hero.cta2":"Explorer Nos Services",
+      "hero.trust1":"Certifies AWS et Azure","hero.trust2":"10+ Ans d'Experience","hero.trust3":"Remote-First, Portee Mondiale",
+      "services.label":"Ce Que Nous Faisons","services.title":"Services Technologiques de Bout en Bout",
+      "services.subtitle":"Nous couvrons l'ensemble du spectre du conseil en logiciel moderne, de l'architecture initiale aux operations en production.",
+      "services.s1.title":"Developpement Logiciel Sur Mesure","services.s1.desc":"Applications construites pour votre logique metier. Nous livrons des plateformes pretes pour la production avec Ruby on Rails, Python et JavaScript moderne, concues pour evoluer des le premier jour.",
+      "services.s2.title":"Cloud et DevOps","services.s2.desc":"Infrastructure as code, pipelines CI/CD automatises, containerisation et architecture cloud-native sur AWS et Azure. Nous rendons vos deployments fiables, reproductibles et rapides.",
+      "services.s3.title":"Architecture et Strategie","services.s3.desc":"Due diligence technique, revues de conception de systemes et feuilles de route de migration. Nous vous aidons a prendre des decisions architecturales qui reduisent les risques.",
+      "services.s4.title":"Renforcement d'Equipe","services.s4.desc":"Integrez des ingenieurs seniors directement dans votre equipe. Nous accelerons la livraison, mentorons vos developpeurs et transferons les connaissances.",
+      "services.s5.title":"Audits et Revues de Code","services.s5.desc":"Evaluations approfondies de la qualite du code, audits de securite et profilage de performance. Nous identifions la dette technique avant qu'elle ne devienne un incident.",
+      "services.s6.title":"Donnees et Analytique","services.s6.desc":"Ingenierie de pipelines de donnees, integrations API et plateformes d'analytique. Nous construisons l'infrastructure qui transforme l'information en intelligence commerciale.",
+      "tech.label":"Notre Stack","tech.title":"Technologies que Nous Maitrisons","tech.subtitle":"Expertise approfondie et eprouvee en production a travers le paysage technologique moderne.",
+      "about.label":"Pourquoi Nous","about.title":"Batis pour l'Excellence en Ingenierie",
+      "about.subtitle":"Nous n'ecrivons pas simplement du code. Nous architectons des solutions qui generent du revenu et positionnent votre technologie comme avantage concurrentiel durable.",
+      "about.stat1":"Projets Livres","about.stat2":"Annees d'Experience","about.stat3":"SLA Uptime Atteint","about.stat4":"Clients Entreprise",
+      "about.v1.title":"Code Propre, Toujours","about.v1.desc":"Chaque ligne que nous ecrivons est testee, revue et documentee. La maintenabilite n'est pas optionnelle, elle est fondamentale.",
+      "about.v2.title":"Communication Honnete","about.v2.desc":"Pas de metriques de vanite. Nous vous donnons un feedback technique direct et des delais transparents.",
+      "about.v3.title":"Partenariat a Long Terme","about.v3.desc":"Nous mesurons le succes par la valeur que nous creons sur des annees. La plupart de nos clients deviennent des partenaires de long terme.",
+      "contact.label":"Contact","contact.title":"Construisons Quelque Chose Ensemble",
+      "contact.subtitle":"Parlez-nous de votre defi. Nous repondrons sous 24 heures avec une evaluation honnete.",
+      "contact.info.title":"Demarrez la Conversation","contact.info.desc":"Que vous ayez besoin d'une equipe complete ou d'un deuxieme avis sur votre architecture, nous sommes la. Sans engagement, sans pitch commercial.",
+      "contact.info.email.label":"Email","contact.info.location.label":"Localisation","contact.info.location.value":"Remote-first, portee mondiale",
+      "contact.info.response.label":"Temps de Reponse","contact.info.response.value":"Sous 24 heures",
+      "contact.form.name":"Nom Complet","contact.form.name.ph":"Jean Dupont",
+      "contact.form.email":"Email Professionnel","contact.form.email.ph":"jean@entreprise.com",
+      "contact.form.company":"Entreprise","contact.form.company.ph":"Nom de votre entreprise",
+      "contact.form.service":"Comment Pouvons-Nous Aider?","contact.form.service.ph":"Selectionnez un domaine...",
+      "contact.form.service.o1":"Developpement Logiciel Sur Mesure","contact.form.service.o2":"Cloud et DevOps","contact.form.service.o3":"Architecture et Strategie",
+      "contact.form.service.o4":"Renforcement d'Equipe","contact.form.service.o5":"Audits et Revues de Code","contact.form.service.o6":"Donnees et Analytique","contact.form.service.o7":"Autre",
+      "contact.form.message":"Details du Projet","contact.form.message.ph":"Parlez-nous de votre projet et exigences techniques...",
+      "contact.form.submit":"Envoyer le Message",
+      "contact.success.title":"Message Envoye avec Succes","contact.success.desc":"Merci de nous avoir contactes. Un membre de notre equipe vous repondra sous 24 heures.",
+      "footer.tagline":"Conseil technologique d'entreprise. Nous construisons les systemes qui propulsent votre croissance.",
+      "footer.services":"Services","footer.company":"Entreprise","footer.rights":"Tous droits reserves.","footer.privacy":"Politique de Confidentialite","footer.terms":"Conditions d'Utilisation",
     },
     de: {
-      "nav.services": "Leistungen",
-      "nav.technologies": "Technologien",
-      "nav.about": "Uber Uns",
-      "nav.contact": "Kontakt",
-      "nav.cta": "Kontaktieren",
-      "hero.badge": "Enterprise-Technologieberatung",
-      "hero.title1": "Wir Entwickeln die Systeme, die ",
-      "hero.title2": "Ihr Wachstum Antreiben",
-      "hero.subtitle": "Wir arbeiten mit ambitionierten Unternehmen zusammen, um die Technologie zu entwerfen, aufzubauen und zu skalieren, die messbare Geschaeftsergebnisse liefert. Von Cloud-Infrastruktur bis zu massgeschneiderten Plattformen liefern wir Engineering-Exzellenz.",
-      "hero.cta1": "Gespraech Starten",
-      "hero.cta2": "Leistungen Entdecken",
-      "hero.trust1": "AWS & Azure Zertifiziert",
-      "hero.trust2": "10+ Jahre Erfahrung",
-      "hero.trust3": "Remote-First, Globale Reichweite",
-      "services.label": "Was Wir Tun",
-      "services.title": "Ganzheitliche Technologie-Services",
-      "services.subtitle": "Wir decken das gesamte Spektrum moderner Softwareberatung ab, von der initialen Architektur bis zum Produktionsbetrieb.",
-      "services.s1.title": "Massgeschneiderte Softwareentwicklung",
-      "services.s1.desc": "Applikationen, die fuer Ihre Geschaeftslogik entwickelt wurden. Wir liefern produktionsreife Plattformen mit Ruby on Rails, Python und modernem JavaScript, die von Tag eins an skalieren.",
-      "services.s2.title": "Cloud & DevOps",
-      "services.s2.desc": "Infrastructure as Code, automatisierte CI/CD-Pipelines, Containerisierung und Cloud-native Architektur auf AWS und Azure. Wir machen Ihre Deployments zuverlaessig, wiederholbar und schnell.",
-      "services.s3.title": "Architektur & Strategie",
-      "services.s3.desc": "Technische Due Diligence, System-Design-Reviews und Migrations-Roadmaps. Wir helfen Ihnen, architektonische Entscheidungen zu treffen, die Risiken reduzieren und sich an langfristigen Geschaeftszielen orientieren.",
-      "services.s4.title": "Team-Erweiterung",
-      "services.s4.desc": "Integrieren Sie Senior-Ingenieure direkt in Ihr Team. Wir beschleunigen die Lieferung, mentoren Ihre Entwickler und transferieren Wissen, damit Sie die Expertise langfristig behalten.",
-      "services.s5.title": "Code-Audits & Reviews",
-      "services.s5.desc": "Tiefgehende Code-Qualitaetsbewertungen, Sicherheitsaudits und Performance-Profiling. Wir identifizieren technische Schulden, Schwachstellen und Engpaesse, bevor sie zu Vorfaellen werden.",
-      "services.s6.title": "Daten & Analytics",
-      "services.s6.desc": "Data-Pipeline-Engineering, API-Integrationen und Analytics-Plattformen. Wir bauen die Dateninfrastruktur, die Rohinformationen in umsetzbare Business Intelligence verwandelt.",
-      "tech.label": "Unser Stack",
-      "tech.title": "Technologien, die Wir Beherrschen",
-      "tech.subtitle": "Tiefe, produktionserprobte Expertise ueber die gesamte moderne Technologielandschaft.",
-      "about.label": "Warum Wir",
-      "about.title": "Gebaut fuer Engineering-Exzellenz",
-      "about.subtitle": "Wir schreiben nicht nur Code. Wir architekturieren Loesungen, die Umsatz steigern, Betriebskosten senken und Ihre Technologie als Wettbewerbsvorteil positionieren.",
-      "about.stat1": "Projekte Geliefert",
-      "about.stat2": "Jahre Erfahrung",
-      "about.stat3": "Uptime-SLA Erreicht",
-      "about.stat4": "Enterprise-Kunden",
-      "about.v1.title": "Sauberer Code, Immer",
-      "about.v1.desc": "Jede Zeile, die wir schreiben, ist getestet, reviewed und dokumentiert. Wir bauen Systeme, die fuer die Ingenieure nach uns entworfen sind, denn Wartbarkeit ist nicht optional, sondern fundamental.",
-      "about.v2.title": "Ehrliche Kommunikation",
-      "about.v2.desc": "Keine Vanity-Metriken, kein Schoenreden. Wir geben Ihnen direktes, technisches Feedback und transparente Zeitplaene. Wenn etwas nicht funktionieren wird, erfahren Sie es von uns zuerst.",
-      "about.v3.title": "Langfristige Partnerschaft",
-      "about.v3.desc": "Wir messen Erfolg am Wert, den wir ueber Jahre schaffen, nicht Sprints. Die meisten unserer Kunden werden langfristige Partner, weil wir ihre Technologie behandeln, als waere sie unsere eigene.",
-      "contact.label": "Kontakt",
-      "contact.title": "Lassen Sie Uns Etwas Gemeinsam Aufbauen",
-      "contact.subtitle": "Erzaehlen Sie uns von Ihrer Herausforderung. Wir antworten innerhalb von 24 Stunden mit einer ehrlichen Einschaetzung, wie wir helfen koennen.",
-      "contact.info.title": "Starten Sie das Gespraech",
-      "contact.info.desc": "Ob Sie ein komplettes Engineering-Team brauchen oder eine zweite Meinung zu Ihrer Architektur, wir sind fuer Sie da. Keine Verpflichtung, kein Verkaufspitch -- nur ein technisches Gespraech ueber Ihre Ziele.",
-      "contact.info.email.label": "E-Mail",
-      "contact.info.location.label": "Standort",
-      "contact.info.location.value": "Remote-first, weltweit",
-      "contact.info.response.label": "Antwortzeit",
-      "contact.info.response.value": "Innerhalb von 24 Stunden",
-      "contact.form.name": "Vollstaendiger Name",
-      "contact.form.name.ph": "Max Mustermann",
-      "contact.form.email": "Geschaeftliche E-Mail",
-      "contact.form.email.ph": "max@unternehmen.de",
-      "contact.form.company": "Unternehmen",
-      "contact.form.company.ph": "Ihr Unternehmensname",
-      "contact.form.service": "Wie Koennen Wir Helfen?",
-      "contact.form.service.ph": "Servicebereich auswaehlen...",
-      "contact.form.service.o1": "Massgeschneiderte Softwareentwicklung",
-      "contact.form.service.o2": "Cloud & DevOps",
-      "contact.form.service.o3": "Architektur & Strategie",
-      "contact.form.service.o4": "Team-Erweiterung",
-      "contact.form.service.o5": "Code-Audits & Reviews",
-      "contact.form.service.o6": "Daten & Analytics",
-      "contact.form.service.o7": "Sonstiges",
-      "contact.form.message": "Projektdetails",
-      "contact.form.message.ph": "Erzaehlen Sie uns von Ihrem Projekt, Zeitplan und technischen Anforderungen...",
-      "contact.form.submit": "Nachricht Senden",
-      "contact.success.title": "Nachricht Erfolgreich Gesendet",
-      "contact.success.desc": "Vielen Dank fuer Ihre Nachricht. Ein Mitglied unseres Teams wird sich innerhalb von 24 Stunden bei Ihnen melden.",
-      "footer.tagline": "Enterprise-Technologieberatung. Wir entwickeln die Systeme, die Ihr Wachstum antreiben.",
-      "footer.services": "Leistungen",
-      "footer.company": "Unternehmen",
-      "footer.rights": "Alle Rechte vorbehalten.",
-      "footer.privacy": "Datenschutzrichtlinie",
-      "footer.terms": "Nutzungsbedingungen",
+      "nav.services":"Leistungen","nav.technologies":"Technologien","nav.about":"Uber Uns","nav.contact":"Kontakt","nav.cta":"Kontaktieren",
+      "hero.badge":"Enterprise-Technologieberatung",
+      "hero.title1":"Strategisches Wachstum, ","hero.title2":"Nachhaltig Entwickelt",
+      "hero.subtitle":"Wir arbeiten mit ambitionierten Unternehmen zusammen, um Technologieplattformen zu entwerfen, aufzubauen und zu skalieren, die messbare Geschaeftsergebnisse liefern. Tiefe Expertise. Bewiesene Resultate. Langfristiger Wert.",
+      "hero.cta1":"Gespraech Starten","hero.cta2":"Leistungen Entdecken",
+      "hero.trust1":"AWS & Azure Zertifiziert","hero.trust2":"10+ Jahre Erfahrung","hero.trust3":"Remote-First, Globale Reichweite",
+      "services.label":"Was Wir Tun","services.title":"Ganzheitliche Technologie-Services",
+      "services.subtitle":"Wir decken das gesamte Spektrum moderner Softwareberatung ab, von der initialen Architektur bis zum Produktionsbetrieb.",
+      "services.s1.title":"Massgeschneiderte Softwareentwicklung","services.s1.desc":"Applikationen fuer Ihre Geschaeftslogik. Wir liefern produktionsreife Plattformen mit Ruby on Rails, Python und modernem JavaScript, die von Tag eins an skalieren.",
+      "services.s2.title":"Cloud & DevOps","services.s2.desc":"Infrastructure as Code, automatisierte CI/CD-Pipelines, Containerisierung und Cloud-native Architektur auf AWS und Azure.",
+      "services.s3.title":"Architektur & Strategie","services.s3.desc":"Technische Due Diligence, System-Design-Reviews und Migrations-Roadmaps. Architektonische Entscheidungen, die Risiken reduzieren.",
+      "services.s4.title":"Team-Erweiterung","services.s4.desc":"Integrieren Sie Senior-Ingenieure direkt in Ihr Team. Wir beschleunigen die Lieferung und transferieren Wissen langfristig.",
+      "services.s5.title":"Code-Audits & Reviews","services.s5.desc":"Tiefgehende Code-Qualitaetsbewertungen, Sicherheitsaudits und Performance-Profiling. Wir identifizieren Schwachstellen bevor sie zu Vorfaellen werden.",
+      "services.s6.title":"Daten & Analytics","services.s6.desc":"Data-Pipeline-Engineering, API-Integrationen und Analytics-Plattformen. Dateninfrastruktur, die Rohinformationen in umsetzbare Business Intelligence verwandelt.",
+      "tech.label":"Unser Stack","tech.title":"Technologien, die Wir Beherrschen","tech.subtitle":"Tiefe, produktionserprobte Expertise ueber die gesamte moderne Technologielandschaft.",
+      "about.label":"Warum Wir","about.title":"Gebaut fuer Engineering-Exzellenz",
+      "about.subtitle":"Wir schreiben nicht nur Code. Wir architekturieren Loesungen, die Umsatz steigern und Ihre Technologie als nachhaltigen Wettbewerbsvorteil positionieren.",
+      "about.stat1":"Projekte Geliefert","about.stat2":"Jahre Erfahrung","about.stat3":"Uptime-SLA Erreicht","about.stat4":"Enterprise-Kunden",
+      "about.v1.title":"Sauberer Code, Immer","about.v1.desc":"Jede Zeile ist getestet, reviewed und dokumentiert. Wartbarkeit ist nicht optional, sondern fundamental.",
+      "about.v2.title":"Ehrliche Kommunikation","about.v2.desc":"Keine Vanity-Metriken. Direktes, technisches Feedback und transparente Zeitplaene.",
+      "about.v3.title":"Langfristige Partnerschaft","about.v3.desc":"Wir messen Erfolg am Wert ueber Jahre. Die meisten Kunden werden langfristige Partner, weil wir ihre Technologie wie unsere eigene behandeln.",
+      "contact.label":"Kontakt","contact.title":"Lassen Sie Uns Etwas Gemeinsam Aufbauen",
+      "contact.subtitle":"Erzaehlen Sie uns von Ihrer Herausforderung. Wir antworten innerhalb von 24 Stunden.",
+      "contact.info.title":"Starten Sie das Gespraech","contact.info.desc":"Ob komplettes Engineering-Team oder zweite Meinung zur Architektur -- wir sind fuer Sie da. Keine Verpflichtung, kein Verkaufspitch.",
+      "contact.info.email.label":"E-Mail","contact.info.location.label":"Standort","contact.info.location.value":"Remote-first, weltweit",
+      "contact.info.response.label":"Antwortzeit","contact.info.response.value":"Innerhalb von 24 Stunden",
+      "contact.form.name":"Vollstaendiger Name","contact.form.name.ph":"Max Mustermann",
+      "contact.form.email":"Geschaeftliche E-Mail","contact.form.email.ph":"max@unternehmen.de",
+      "contact.form.company":"Unternehmen","contact.form.company.ph":"Ihr Unternehmensname",
+      "contact.form.service":"Wie Koennen Wir Helfen?","contact.form.service.ph":"Servicebereich auswaehlen...",
+      "contact.form.service.o1":"Massgeschneiderte Softwareentwicklung","contact.form.service.o2":"Cloud & DevOps","contact.form.service.o3":"Architektur & Strategie",
+      "contact.form.service.o4":"Team-Erweiterung","contact.form.service.o5":"Code-Audits & Reviews","contact.form.service.o6":"Daten & Analytics","contact.form.service.o7":"Sonstiges",
+      "contact.form.message":"Projektdetails","contact.form.message.ph":"Erzaehlen Sie uns von Ihrem Projekt und technischen Anforderungen...",
+      "contact.form.submit":"Nachricht Senden",
+      "contact.success.title":"Nachricht Erfolgreich Gesendet","contact.success.desc":"Vielen Dank. Ein Mitglied unseres Teams meldet sich innerhalb von 24 Stunden.",
+      "footer.tagline":"Enterprise-Technologieberatung. Wir entwickeln die Systeme, die Ihr Wachstum antreiben.",
+      "footer.services":"Leistungen","footer.company":"Unternehmen","footer.rights":"Alle Rechte vorbehalten.","footer.privacy":"Datenschutzrichtlinie","footer.terms":"Nutzungsbedingungen",
     },
   };
 
-  /* ---------------------------------------------------------------
+  /* -----------------------------------------------------------------
      i18n — Apply translations
-     --------------------------------------------------------------- */
+     ----------------------------------------------------------------- */
   let currentLanguage = 'en';
 
   function setLang(lang) {
     currentLanguage = lang;
     const dict = translations[lang];
     if (!dict) return;
-
     document.documentElement.lang = lang;
     document.getElementById('currentLang').textContent = lang.toUpperCase();
-
-    // Text content
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
-      if (dict[key] !== undefined) {
-        el.textContent = dict[key];
-      }
+      if (dict[key] !== undefined) el.textContent = dict[key];
     });
-
-    // Placeholders
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
       const key = el.getAttribute('data-i18n-placeholder');
-      if (dict[key] !== undefined) {
-        el.placeholder = dict[key];
-      }
+      if (dict[key] !== undefined) el.placeholder = dict[key];
     });
-
-    // Store preference
     localStorage.setItem('montrebo-lang', lang);
   }
 
-  /* ---------------------------------------------------------------
+  /* -----------------------------------------------------------------
      Navigation — scroll state + mobile menu
-     --------------------------------------------------------------- */
+     ----------------------------------------------------------------- */
   const navbar = document.getElementById('navbar');
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -1117,7 +896,6 @@
     mobileMenu.classList.toggle('open');
   });
 
-  // Close mobile menu on link click
   document.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', () => {
       hamburger.classList.remove('active');
@@ -1125,9 +903,9 @@
     });
   });
 
-  /* ---------------------------------------------------------------
+  /* -----------------------------------------------------------------
      Smooth scroll with nav offset
-     --------------------------------------------------------------- */
+     ----------------------------------------------------------------- */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
       const href = anchor.getAttribute('href');
@@ -1135,49 +913,38 @@
       e.preventDefault();
       const target = document.querySelector(href);
       if (target) {
-        window.scrollTo({
-          top: target.offsetTop - 72,
-          behavior: 'smooth'
-        });
+        window.scrollTo({ top: target.offsetTop - 72, behavior: 'smooth' });
       }
     });
   });
 
-  /* ---------------------------------------------------------------
-     Scroll reveal animations (Intersection Observer)
-     --------------------------------------------------------------- */
+  /* -----------------------------------------------------------------
+     Scroll reveal (Intersection Observer)
+     ----------------------------------------------------------------- */
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -40px 0px'
-  });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  /* ---------------------------------------------------------------
+  /* -----------------------------------------------------------------
      Contact form
-     --------------------------------------------------------------- */
+     ----------------------------------------------------------------- */
   document.getElementById('contactForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const form = e.target;
-    const data = Object.fromEntries(new FormData(form));
-    console.log('Form submitted:', data);
-    form.closest('.lg\\:col-span-3').querySelector('form').classList.add('hidden');
+    console.log('Form submitted:', Object.fromEntries(new FormData(form)));
+    form.classList.add('hidden');
     document.getElementById('formSuccess').classList.remove('hidden');
   });
 
-  /* ---------------------------------------------------------------
+  /* -----------------------------------------------------------------
      Init — restore saved language
-     --------------------------------------------------------------- */
+     ----------------------------------------------------------------- */
   const savedLang = localStorage.getItem('montrebo-lang');
-  if (savedLang && translations[savedLang]) {
-    setLang(savedLang);
-  }
+  if (savedLang && translations[savedLang]) setLang(savedLang);
   </script>
 </body>
 </html>
