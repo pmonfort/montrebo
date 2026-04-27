@@ -7,7 +7,6 @@
   <meta name="description" content="Montrebo delivers expert technology consulting in software development, cloud infrastructure, DevOps, and digital transformation for enterprises worldwide.">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -17,16 +16,15 @@
             navy:        '#0A1421',
             'navy-light':'#0F1D2E',
             'navy-mid':  '#152238',
+            card:        '#1E2937',
             accent:      '#3B82F6',
             'accent-dark':'#2563EB',
             indigo:      '#6366F1',
             emerald:     '#10B981',
             'emerald-dark':'#059669',
-            surface:     '#F8FAFC',
-            heading:     '#0F172A',
-            body:        '#334155',
-            muted:       '#64748B',
-            border:      '#E2E8F0',
+            primary:     '#F1F5F9',
+            secondary:   '#94A3B8',
+            subtle:      '#334155',
           },
           fontFamily: {
             sans: ['Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','sans-serif'],
@@ -36,20 +34,16 @@
     }
   </script>
 
-  <!-- Inter Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Favicon -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     html { scroll-behavior: smooth; }
 
-    /* ---- Scroll-triggered reveal ---- */
     .reveal {
       opacity: 0;
-      transform: translateY(32px);
+      transform: translateY(28px);
       transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
                   transform 0.7s cubic-bezier(0.16,1,0.3,1);
     }
@@ -60,24 +54,15 @@
     .reveal-delay-4 { transition-delay:.4s }
     .reveal-delay-5 { transition-delay:.5s }
 
-    /* ---- Hero grid background ---- */
     .hero-grid {
       background-image:
-        linear-gradient(rgba(59,130,246,0.04) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(59,130,246,0.04) 1px,transparent 1px);
-      background-size: 64px 64px;
+        linear-gradient(rgba(59,130,246,0.03) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(59,130,246,0.03) 1px,transparent 1px);
+      background-size: 72px 72px;
     }
 
-    /* ---- Glassmorphism ---- */
-    .glass {
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,0.07);
-    }
-
-    /* ---- Gradient text ---- */
     .gradient-text {
-      background: linear-gradient(135deg,#3B82F6,#6366F1);
+      background: linear-gradient(135deg,#3B82F6,#818CF8);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -89,49 +74,85 @@
       background-clip: text;
     }
 
-    /* ---- Nav scroll ---- */
-    .nav-scrolled { background:rgba(10,20,33,0.97)!important; box-shadow:0 1px 3px rgba(0,0,0,0.3); }
+    .nav-scrolled { background:rgba(10,20,33,0.97)!important; box-shadow:0 1px 3px rgba(0,0,0,0.4); border-color: transparent !important; }
 
-    /* ---- Language dropdown ---- */
     .lang-menu { display:none; position:absolute; top:100%; right:0; margin-top:.5rem; min-width:160px; }
     .lang-btn:hover .lang-menu, .lang-menu:hover, .lang-btn:focus-within .lang-menu { display:block; }
 
-    /* ---- Mobile menu ---- */
     .mobile-menu { max-height:0; overflow:hidden; transition:max-height .35s ease; }
     .mobile-menu.open { max-height:420px; }
 
-    /* ---- Service card glow on hover ---- */
-    .service-glow { transition: box-shadow .4s, border-color .3s, transform .3s; }
-    .service-glow:hover { box-shadow: 0 0 40px -8px rgba(59,130,246,0.12); }
+    .card-hover {
+      transition: transform .3s ease, box-shadow .4s ease, border-color .3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 60px -12px rgba(59,130,246,0.15);
+    }
 
-    /* ---- Clover float animation ---- */
     @keyframes float {
-      0%,100% { transform: translateY(0); }
-      50%     { transform: translateY(-8px); }
+      0%,100% { transform: translateY(0) rotate(0deg); }
+      50%     { transform: translateY(-10px) rotate(1deg); }
     }
     .float { animation: float 6s ease-in-out infinite; }
-    .float-delay { animation: float 6s ease-in-out 2s infinite; }
+
+    @keyframes pulse-glow {
+      0%,100% { opacity: 0.4; }
+      50%     { opacity: 0.8; }
+    }
+    .pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+    .input-dark {
+      background: #0A1421;
+      border: 1px solid #334155;
+      color: #F1F5F9;
+    }
+    .input-dark::placeholder { color: #64748B; }
+    .input-dark:focus {
+      outline: none;
+      border-color: #3B82F6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+    }
+
+    .stat-card { position: relative; overflow: hidden; }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #3B82F6, transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .stat-card:nth-child(3)::before {
+      background: linear-gradient(90deg, transparent, #10B981, transparent);
+    }
+    .stat-card:hover::before { opacity: 1; }
+
+    .select-dark {
+      background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 20 20%22 fill=%22%2394A3B8%22><path fill-rule=%22evenodd%22 d=%22M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z%22 clip-rule=%22evenodd%22/></svg>');
+      background-position: right 1rem center;
+      background-repeat: no-repeat;
+      background-size: 1.25rem;
+    }
   </style>
 </head>
-<body class="font-sans text-body antialiased">
+<body class="font-sans text-secondary antialiased bg-navy">
 
 
   <!-- ================================================================
        NAVIGATION
        ================================================================ -->
-  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-navy/80 backdrop-blur-xl border-b border-white/5">
+  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-navy/70 backdrop-blur-xl border-b border-white/5">
     <div class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-[72px]">
 
-      <!-- Logo: Isotype + Wordmark -->
       <a href="#" class="flex items-center gap-3 group">
         <img src="logo.png" alt="Montrebo" class="w-9 h-9 flex-shrink-0 transition-transform duration-300 group-hover:scale-105 object-contain">
-        <!-- Wordmark -->
         <span class="text-[22px] font-extrabold tracking-tight">
-          <span class="text-white">Montre</span><span class="gradient-text">bo</span>
+          <span class="text-white">Mon</span><span class="text-emerald">trebo</span>
         </span>
       </a>
 
-      <!-- Desktop Nav -->
       <div class="hidden lg:flex items-center gap-8">
         <a href="#services"  data-i18n="nav.services"     class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Services</a>
         <a href="#tech"      data-i18n="nav.technologies"  class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Technologies</a>
@@ -139,47 +160,43 @@
         <a href="#products"  data-i18n="nav.products"      class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Products</a>
         <a href="#contact"   data-i18n="nav.contact"       class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact</a>
 
-        <!-- Language Selector -->
         <div class="relative lang-btn">
-          <button class="flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-white transition-colors px-2 py-1 rounded-lg hover:bg-white/5">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9 9 0 100-18 9 9 0 000 18zm0-18c2.5 3 4 6.5 4 9s-1.5 6-4 9m0-18c-2.5 3-4 6.5-4 9s1.5 6 4 9M3 12h18"/></svg>
+          <button class="flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-white transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
             <span id="currentLang">EN</span>
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
-          <div class="lang-menu bg-navy-light border border-white/10 rounded-xl shadow-2xl py-2 z-50">
-            <button onclick="setLang('en')" class="w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 flex items-center gap-3 transition-colors"><span class="font-semibold">EN</span><span class="text-slate-500">English</span></button>
-            <button onclick="setLang('es')" class="w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 flex items-center gap-3 transition-colors"><span class="font-semibold">ES</span><span class="text-slate-500">Espanol</span></button>
-            <button onclick="setLang('pt')" class="w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 flex items-center gap-3 transition-colors"><span class="font-semibold">PT</span><span class="text-slate-500">Portugues</span></button>
-            <button onclick="setLang('fr')" class="w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 flex items-center gap-3 transition-colors"><span class="font-semibold">FR</span><span class="text-slate-500">Francais</span></button>
-            <button onclick="setLang('de')" class="w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 flex items-center gap-3 transition-colors"><span class="font-semibold">DE</span><span class="text-slate-500">Deutsch</span></button>
+          <div class="lang-menu bg-card border border-subtle rounded-xl shadow-xl shadow-black/30 py-2 overflow-hidden">
+            <button onclick="setLang('en')" class="w-full text-left px-4 py-2 text-sm text-slate-300 hover:bg-white/5 hover:text-white transition-colors">English</button>
+            <button onclick="setLang('es')" class="w-full text-left px-4 py-2 text-sm text-slate-300 hover:bg-white/5 hover:text-white transition-colors">Espanol</button>
+            <button onclick="setLang('pt')" class="w-full text-left px-4 py-2 text-sm text-slate-300 hover:bg-white/5 hover:text-white transition-colors">Portugues</button>
+            <button onclick="setLang('fr')" class="w-full text-left px-4 py-2 text-sm text-slate-300 hover:bg-white/5 hover:text-white transition-colors">Francais</button>
+            <button onclick="setLang('de')" class="w-full text-left px-4 py-2 text-sm text-slate-300 hover:bg-white/5 hover:text-white transition-colors">Deutsch</button>
           </div>
         </div>
 
         <a href="#contact" data-i18n="nav.cta" class="ml-2 inline-flex items-center gap-2 px-5 py-2.5 bg-accent hover:bg-accent-dark text-white text-sm font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-accent/25 hover:-translate-y-0.5">Get in Touch</a>
       </div>
 
-      <!-- Mobile Hamburger -->
-      <button id="hamburger" class="lg:hidden flex flex-col gap-1.5 p-2 group" aria-label="Toggle menu">
-        <span class="block w-6 h-0.5 bg-white transition-all duration-300 origin-center group-[.active]:rotate-45 group-[.active]:translate-y-2"></span>
-        <span class="block w-6 h-0.5 bg-white transition-all duration-300 group-[.active]:opacity-0"></span>
-        <span class="block w-6 h-0.5 bg-white transition-all duration-300 origin-center group-[.active]:-rotate-45 group-[.active]:-translate-y-2"></span>
+      <button id="hamburger" class="lg:hidden flex flex-col gap-1.5 p-2 -mr-2" aria-label="Menu">
+        <span class="block w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+        <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+        <span class="block w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
       </button>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="mobile-menu lg:hidden bg-navy-light border-t border-white/5">
-      <div class="px-5 py-6 flex flex-col gap-4">
+    <div id="mobileMenu" class="mobile-menu lg:hidden bg-navy/95 backdrop-blur-xl border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 py-6 flex flex-col gap-4">
         <a href="#services" data-i18n="nav.services"     class="mobile-link text-base text-slate-300 hover:text-white transition-colors">Services</a>
         <a href="#tech"     data-i18n="nav.technologies"  class="mobile-link text-base text-slate-300 hover:text-white transition-colors">Technologies</a>
-        <a href="#about"    data-i18n="nav.about"          class="mobile-link text-base text-slate-300 hover:text-white transition-colors">About</a>
-        <a href="#products" data-i18n="nav.products"       class="mobile-link text-base text-slate-300 hover:text-white transition-colors">Products</a>
+        <a href="#about"    data-i18n="nav.about"         class="mobile-link text-base text-slate-300 hover:text-white transition-colors">About</a>
+        <a href="#products" data-i18n="nav.products"      class="mobile-link text-base text-slate-300 hover:text-white transition-colors">Products</a>
         <a href="#contact"  data-i18n="nav.contact"        class="mobile-link text-base text-slate-300 hover:text-white transition-colors">Contact</a>
-        <div class="flex gap-2 pt-2 border-t border-white/10 mt-2">
-          <button onclick="setLang('en')" class="text-xs text-slate-400 hover:text-white px-2 py-1 rounded hover:bg-white/5">EN</button>
-          <button onclick="setLang('es')" class="text-xs text-slate-400 hover:text-white px-2 py-1 rounded hover:bg-white/5">ES</button>
-          <button onclick="setLang('pt')" class="text-xs text-slate-400 hover:text-white px-2 py-1 rounded hover:bg-white/5">PT</button>
-          <button onclick="setLang('fr')" class="text-xs text-slate-400 hover:text-white px-2 py-1 rounded hover:bg-white/5">FR</button>
-          <button onclick="setLang('de')" class="text-xs text-slate-400 hover:text-white px-2 py-1 rounded hover:bg-white/5">DE</button>
+        <div class="flex gap-2 pt-2">
+          <button onclick="setLang('en')" class="px-3 py-1.5 text-xs font-medium text-slate-400 border border-subtle rounded-lg hover:text-white hover:border-slate-500 transition-colors">EN</button>
+          <button onclick="setLang('es')" class="px-3 py-1.5 text-xs font-medium text-slate-400 border border-subtle rounded-lg hover:text-white hover:border-slate-500 transition-colors">ES</button>
+          <button onclick="setLang('pt')" class="px-3 py-1.5 text-xs font-medium text-slate-400 border border-subtle rounded-lg hover:text-white hover:border-slate-500 transition-colors">PT</button>
+          <button onclick="setLang('fr')" class="px-3 py-1.5 text-xs font-medium text-slate-400 border border-subtle rounded-lg hover:text-white hover:border-slate-500 transition-colors">FR</button>
+          <button onclick="setLang('de')" class="px-3 py-1.5 text-xs font-medium text-slate-400 border border-subtle rounded-lg hover:text-white hover:border-slate-500 transition-colors">DE</button>
         </div>
         <a href="#contact" data-i18n="nav.cta" class="mt-2 text-center px-5 py-3 bg-accent text-white text-sm font-semibold rounded-lg hover:bg-accent-dark transition-colors">Get in Touch</a>
       </div>
@@ -191,68 +208,62 @@
        HERO SECTION
        ================================================================ -->
   <section class="relative min-h-screen flex items-center bg-navy overflow-hidden">
-    <!-- Background layers -->
     <div class="absolute inset-0 hero-grid"></div>
-    <div class="absolute inset-0 bg-gradient-to-br from-accent/[0.06] via-transparent to-indigo/[0.04]"></div>
-    <div class="absolute top-1/4 -left-40 w-[500px] h-[500px] bg-accent/[0.08] rounded-full blur-[140px]"></div>
-    <div class="absolute bottom-1/4 -right-40 w-[400px] h-[400px] bg-indigo/[0.07] rounded-full blur-[140px]"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-accent/[0.05] via-transparent to-emerald/[0.03]"></div>
+    <div class="absolute top-1/4 -left-40 w-[600px] h-[600px] bg-accent/[0.07] rounded-full blur-[160px]"></div>
+    <div class="absolute bottom-1/4 -right-40 w-[500px] h-[500px] bg-emerald/[0.05] rounded-full blur-[160px]"></div>
 
-    <!-- Decorative floating abstract shapes -->
+    <!-- Decorative geometric shapes -->
     <div class="absolute right-[6%] top-[15%] opacity-[0.06] float hidden lg:block">
       <svg class="w-80 h-80" viewBox="0 0 200 200" fill="none">
-        <circle cx="100" cy="100" r="80" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="8 6"/>
-        <circle cx="100" cy="100" r="55" stroke="#6366F1" stroke-width="1"/>
-        <rect x="70" y="70" width="60" height="60" rx="12" stroke="#3B82F6" stroke-width="1.5" transform="rotate(15 100 100)"/>
-        <circle cx="100" cy="100" r="8" fill="#3B82F6" opacity="0.5"/>
+        <circle cx="100" cy="100" r="80" stroke="#10B981" stroke-width="1.5" stroke-dasharray="8 6"/>
+        <circle cx="100" cy="100" r="55" stroke="#10B981" stroke-width="1"/>
+        <rect x="70" y="70" width="60" height="60" rx="12" stroke="#10B981" stroke-width="1.5" transform="rotate(15 100 100)"/>
+        <circle cx="100" cy="100" r="8" fill="#10B981" opacity="0.5"/>
       </svg>
     </div>
 
     <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-32 pb-20 lg:pt-0 lg:pb-0 w-full">
       <div class="max-w-3xl">
 
-        <!-- Badge -->
         <div class="reveal inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] mb-8">
-          <span class="w-2 h-2 bg-emerald rounded-full animate-pulse"></span>
+          <span class="w-2 h-2 bg-emerald rounded-full pulse-glow"></span>
           <span data-i18n="hero.badge" class="text-sm font-medium text-slate-400">Enterprise Technology Consulting</span>
         </div>
 
-        <!-- Heading -->
-        <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] font-extrabold text-white leading-[1.08] tracking-tight mb-8">
-          <span data-i18n="hero.title1">Strategic Growth, </span>
-          <span class="gradient-text" data-i18n="hero.title2">Engineered to Last</span>
+        <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-[1.08] mb-7">
+          <span data-i18n="hero.title1" class="text-white">Strategic Growth, </span>
+          <span data-i18n="hero.title2" class="gradient-text">Engineered to Last</span>
         </h1>
 
-        <!-- Subtitle -->
         <p class="reveal reveal-delay-2 text-lg sm:text-xl text-slate-400 leading-relaxed max-w-2xl mb-10" data-i18n="hero.subtitle">
           We partner with ambitious companies to architect, build, and scale the technology platforms that drive measurable business outcomes. Deep expertise. Proven results. Long-term value.
         </p>
 
-        <!-- CTAs -->
-        <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-4">
-          <a href="#contact" data-i18n="hero.cta1" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent hover:bg-accent-dark text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-xl hover:shadow-accent/20 hover:-translate-y-0.5 text-base">
+        <div class="reveal reveal-delay-3 flex flex-wrap gap-4 mb-14">
+          <a href="#contact" data-i18n="hero.cta1" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent hover:bg-accent-dark text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-xl hover:shadow-accent/25 hover:-translate-y-0.5 text-base">
             Start a Conversation
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
-          <a href="#services" data-i18n="hero.cta2" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-slate-600 hover:border-slate-400 text-slate-300 hover:text-white font-semibold rounded-xl transition-all duration-300 hover:-translate-y-0.5 text-base">
+          <a href="#services" data-i18n="hero.cta2" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-subtle hover:border-slate-500 text-slate-300 hover:text-white font-semibold rounded-xl transition-all duration-300 hover:-translate-y-0.5 text-base">
             Explore Our Services
           </a>
         </div>
 
-        <!-- Trust indicators -->
-        <div class="reveal reveal-delay-4 mt-16 flex flex-wrap items-center gap-x-8 gap-y-3">
-          <div class="flex items-center gap-2 text-sm text-slate-500">
+        <div class="reveal reveal-delay-4 flex flex-wrap gap-6 sm:gap-8">
+          <div class="flex items-center gap-2">
             <svg class="w-4 h-4 text-emerald" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span data-i18n="hero.trust1">AWS & Azure Certified</span>
+            <span data-i18n="hero.trust1" class="text-sm text-slate-500">AWS & Azure Certified</span>
           </div>
-          <div class="flex items-center gap-2 text-sm text-slate-500">
+          <div class="flex items-center gap-2">
             <svg class="w-4 h-4 text-emerald" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span data-i18n="hero.trust2">10+ Years of Delivery</span>
+            <span data-i18n="hero.trust2" class="text-sm text-slate-500">10+ Years of Delivery</span>
           </div>
-          <div class="flex items-center gap-2 text-sm text-slate-500">
+          <div class="flex items-center gap-2">
             <svg class="w-4 h-4 text-emerald" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span data-i18n="hero.trust3">Remote-First, Global Reach</span>
+            <span data-i18n="hero.trust3" class="text-sm text-slate-500">Remote-First, Global Reach</span>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -266,63 +277,57 @@
       <div class="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
         <p class="reveal text-sm font-semibold tracking-widest uppercase text-accent mb-4" data-i18n="services.label">What We Do</p>
         <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-5" data-i18n="services.title">End-to-End Technology Services</h2>
-        <p class="reveal reveal-delay-2 text-lg text-slate-400 leading-relaxed" data-i18n="services.subtitle">We cover the full spectrum of modern software consulting -- from initial architecture through production operations and beyond.</p>
+        <p class="reveal reveal-delay-2 text-lg text-secondary leading-relaxed" data-i18n="services.subtitle">We cover the full spectrum of modern software consulting -- from initial architecture through production operations and beyond.</p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
 
-        <!-- Service 1: Custom Software -->
-        <div class="reveal service-glow group bg-navy-mid rounded-2xl p-8 sm:p-9 border border-white/10 hover:border-accent/30 hover:-translate-y-1.5">
+        <div class="reveal card-hover group bg-card rounded-2xl p-8 sm:p-9 border border-subtle/50 hover:border-accent/40">
           <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:shadow-lg group-hover:shadow-accent/20 transition-all duration-300">
             <svg class="w-7 h-7 text-accent group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-3" data-i18n="services.s1.title">Custom Software Development</h3>
-          <p class="text-slate-400 leading-relaxed text-[15px]" data-i18n="services.s1.desc">Purpose-built applications engineered for your business logic. We ship production-ready platforms using Ruby on Rails, Python, and modern JavaScript -- architected to scale from day one.</p>
+          <p class="text-secondary leading-relaxed text-[15px]" data-i18n="services.s1.desc">Purpose-built applications engineered for your business logic. We ship production-ready platforms using Ruby on Rails, Python, and modern JavaScript -- architected to scale from day one.</p>
         </div>
 
-        <!-- Service 2: Cloud & DevOps -->
-        <div class="reveal reveal-delay-1 service-glow group bg-navy-mid rounded-2xl p-8 sm:p-9 border border-white/10 hover:border-emerald/30 hover:-translate-y-1.5">
+        <div class="reveal reveal-delay-1 card-hover group bg-card rounded-2xl p-8 sm:p-9 border border-subtle/50 hover:border-emerald/40">
           <div class="w-14 h-14 rounded-xl bg-emerald/10 flex items-center justify-center mb-6 group-hover:bg-emerald group-hover:shadow-lg group-hover:shadow-emerald/20 transition-all duration-300">
             <svg class="w-7 h-7 text-emerald group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-3" data-i18n="services.s2.title">Cloud & DevOps</h3>
-          <p class="text-slate-400 leading-relaxed text-[15px]" data-i18n="services.s2.desc">Infrastructure as code, automated CI/CD pipelines, containerization, and cloud-native architecture on AWS and Azure. We make your deployments reliable, repeatable, and fast.</p>
+          <p class="text-secondary leading-relaxed text-[15px]" data-i18n="services.s2.desc">Infrastructure as code, automated CI/CD pipelines, containerization, and cloud-native architecture on AWS and Azure. We make your deployments reliable, repeatable, and fast.</p>
         </div>
 
-        <!-- Service 3: Architecture -->
-        <div class="reveal reveal-delay-2 service-glow group bg-navy-mid rounded-2xl p-8 sm:p-9 border border-white/10 hover:border-indigo/30 hover:-translate-y-1.5">
+        <div class="reveal reveal-delay-2 card-hover group bg-card rounded-2xl p-8 sm:p-9 border border-subtle/50 hover:border-indigo/40">
           <div class="w-14 h-14 rounded-xl bg-indigo/10 flex items-center justify-center mb-6 group-hover:bg-indigo group-hover:shadow-lg group-hover:shadow-indigo/20 transition-all duration-300">
             <svg class="w-7 h-7 text-indigo group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-3" data-i18n="services.s3.title">Architecture & Strategy</h3>
-          <p class="text-slate-400 leading-relaxed text-[15px]" data-i18n="services.s3.desc">Technical due diligence, system design reviews, and migration roadmaps. We help you make architectural decisions that reduce risk and align technology with long-term business goals.</p>
+          <p class="text-secondary leading-relaxed text-[15px]" data-i18n="services.s3.desc">Technical due diligence, system design reviews, and migration roadmaps. We help you make architectural decisions that reduce risk and align technology with long-term business goals.</p>
         </div>
 
-        <!-- Service 4: Team Augmentation -->
-        <div class="reveal service-glow group bg-navy-mid rounded-2xl p-8 sm:p-9 border border-white/10 hover:border-accent/30 hover:-translate-y-1.5">
+        <div class="reveal card-hover group bg-card rounded-2xl p-8 sm:p-9 border border-subtle/50 hover:border-accent/40">
           <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:shadow-lg group-hover:shadow-accent/20 transition-all duration-300">
             <svg class="w-7 h-7 text-accent group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-3" data-i18n="services.s4.title">Team Augmentation</h3>
-          <p class="text-slate-400 leading-relaxed text-[15px]" data-i18n="services.s4.desc">Embed senior engineers directly into your team. We accelerate delivery, mentor your developers, and transfer knowledge -- so you retain the expertise long after we leave.</p>
+          <p class="text-secondary leading-relaxed text-[15px]" data-i18n="services.s4.desc">Embed senior engineers directly into your team. We accelerate delivery, mentor your developers, and transfer knowledge -- so you retain the expertise long after we leave.</p>
         </div>
 
-        <!-- Service 5: Code Audits -->
-        <div class="reveal reveal-delay-1 service-glow group bg-navy-mid rounded-2xl p-8 sm:p-9 border border-white/10 hover:border-emerald/30 hover:-translate-y-1.5">
+        <div class="reveal reveal-delay-1 card-hover group bg-card rounded-2xl p-8 sm:p-9 border border-subtle/50 hover:border-emerald/40">
           <div class="w-14 h-14 rounded-xl bg-emerald/10 flex items-center justify-center mb-6 group-hover:bg-emerald group-hover:shadow-lg group-hover:shadow-emerald/20 transition-all duration-300">
             <svg class="w-7 h-7 text-emerald group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-3" data-i18n="services.s5.title">Code Audits & Reviews</h3>
-          <p class="text-slate-400 leading-relaxed text-[15px]" data-i18n="services.s5.desc">In-depth code quality assessments, security audits, and performance profiling. We identify technical debt, vulnerabilities, and bottlenecks before they become production incidents.</p>
+          <p class="text-secondary leading-relaxed text-[15px]" data-i18n="services.s5.desc">In-depth code quality assessments, security audits, and performance profiling. We identify technical debt, vulnerabilities, and bottlenecks before they become production incidents.</p>
         </div>
 
-        <!-- Service 6: Data -->
-        <div class="reveal reveal-delay-2 service-glow group bg-navy-mid rounded-2xl p-8 sm:p-9 border border-white/10 hover:border-indigo/30 hover:-translate-y-1.5">
+        <div class="reveal reveal-delay-2 card-hover group bg-card rounded-2xl p-8 sm:p-9 border border-subtle/50 hover:border-indigo/40">
           <div class="w-14 h-14 rounded-xl bg-indigo/10 flex items-center justify-center mb-6 group-hover:bg-indigo group-hover:shadow-lg group-hover:shadow-indigo/20 transition-all duration-300">
             <svg class="w-7 h-7 text-indigo group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-3" data-i18n="services.s6.title">Data & Analytics</h3>
-          <p class="text-slate-400 leading-relaxed text-[15px]" data-i18n="services.s6.desc">Data pipeline engineering, API integrations, and analytics platforms. We build the data infrastructure that transforms raw information into actionable business intelligence.</p>
+          <p class="text-secondary leading-relaxed text-[15px]" data-i18n="services.s6.desc">Data pipeline engineering, API integrations, and analytics platforms. We build the data infrastructure that transforms raw information into actionable business intelligence.</p>
         </div>
 
       </div>
@@ -338,81 +343,69 @@
       <div class="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
         <p class="reveal text-sm font-semibold tracking-widest uppercase text-accent mb-4" data-i18n="tech.label">Our Stack</p>
         <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-5" data-i18n="tech.title">Technologies We Master</h2>
-        <p class="reveal reveal-delay-2 text-lg text-slate-400 leading-relaxed" data-i18n="tech.subtitle">Deep, production-proven expertise across the modern technology landscape.</p>
+        <p class="reveal reveal-delay-2 text-lg text-secondary leading-relaxed" data-i18n="tech.subtitle">Deep, production-proven expertise across the modern technology landscape.</p>
       </div>
 
       <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5">
 
-        <!-- Ruby -->
-        <div class="reveal group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-white/10 bg-navy-mid hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+        <div class="reveal group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-subtle/50 bg-card hover:border-accent/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/10">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ruby/ruby-original.svg" alt="Ruby" class="w-12 h-12 sm:w-14 sm:h-14">
-          <span class="text-xs sm:text-sm font-semibold text-white text-center">Ruby / Rails</span>
+          <span class="text-xs sm:text-sm font-semibold text-primary text-center">Ruby / Rails</span>
         </div>
 
-        <!-- Python -->
-        <div class="reveal reveal-delay-1 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-white/10 bg-navy-mid hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+        <div class="reveal reveal-delay-1 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-subtle/50 bg-card hover:border-accent/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/10">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" class="w-12 h-12 sm:w-14 sm:h-14">
-          <span class="text-xs sm:text-sm font-semibold text-white text-center">Python</span>
+          <span class="text-xs sm:text-sm font-semibold text-primary text-center">Python</span>
         </div>
 
-        <!-- JavaScript -->
-        <div class="reveal reveal-delay-2 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-white/10 bg-navy-mid hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+        <div class="reveal reveal-delay-2 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-subtle/50 bg-card hover:border-accent/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/10">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-12 h-12 sm:w-14 sm:h-14 rounded">
-          <span class="text-xs sm:text-sm font-semibold text-white text-center">JavaScript</span>
+          <span class="text-xs sm:text-sm font-semibold text-primary text-center">JavaScript</span>
         </div>
 
-        <!-- React -->
-        <div class="reveal reveal-delay-3 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-white/10 bg-navy-mid hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+        <div class="reveal reveal-delay-3 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-subtle/50 bg-card hover:border-accent/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/10">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" class="w-12 h-12 sm:w-14 sm:h-14">
-          <span class="text-xs sm:text-sm font-semibold text-white text-center">React</span>
+          <span class="text-xs sm:text-sm font-semibold text-primary text-center">React</span>
         </div>
 
-        <!-- Next.js -->
-        <div class="reveal reveal-delay-4 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-white/10 bg-navy-mid hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+        <div class="reveal reveal-delay-4 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-subtle/50 bg-card hover:border-accent/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/10">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" alt="Next.js" class="w-12 h-12 sm:w-14 sm:h-14 invert">
-          <span class="text-xs sm:text-sm font-semibold text-white text-center">Next.js</span>
+          <span class="text-xs sm:text-sm font-semibold text-primary text-center">Next.js</span>
         </div>
 
-        <!-- Node.js -->
-        <div class="reveal reveal-delay-5 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-white/10 bg-navy-mid hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+        <div class="reveal reveal-delay-5 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-subtle/50 bg-card hover:border-accent/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/10">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" class="w-12 h-12 sm:w-14 sm:h-14">
-          <span class="text-xs sm:text-sm font-semibold text-white text-center">Node.js</span>
+          <span class="text-xs sm:text-sm font-semibold text-primary text-center">Node.js</span>
         </div>
 
-        <!-- AWS -->
-        <div class="reveal group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-white/10 bg-navy-mid hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+        <div class="reveal group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-subtle/50 bg-card hover:border-emerald/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald/10">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" class="w-12 h-12 sm:w-14 sm:h-14">
-          <span class="text-xs sm:text-sm font-semibold text-white text-center">AWS</span>
+          <span class="text-xs sm:text-sm font-semibold text-primary text-center">AWS</span>
         </div>
 
-        <!-- Azure -->
-        <div class="reveal reveal-delay-1 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-white/10 bg-navy-mid hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+        <div class="reveal reveal-delay-1 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-subtle/50 bg-card hover:border-emerald/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald/10">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg" alt="Azure" class="w-12 h-12 sm:w-14 sm:h-14">
-          <span class="text-xs sm:text-sm font-semibold text-white text-center">Azure</span>
+          <span class="text-xs sm:text-sm font-semibold text-primary text-center">Azure</span>
         </div>
 
-        <!-- Docker -->
-        <div class="reveal reveal-delay-2 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-white/10 bg-navy-mid hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+        <div class="reveal reveal-delay-2 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-subtle/50 bg-card hover:border-emerald/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald/10">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker" class="w-12 h-12 sm:w-14 sm:h-14">
-          <span class="text-xs sm:text-sm font-semibold text-white text-center">Docker</span>
+          <span class="text-xs sm:text-sm font-semibold text-primary text-center">Docker</span>
         </div>
 
-        <!-- Kubernetes -->
-        <div class="reveal reveal-delay-3 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-white/10 bg-navy-mid hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+        <div class="reveal reveal-delay-3 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-subtle/50 bg-card hover:border-emerald/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald/10">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" class="w-12 h-12 sm:w-14 sm:h-14">
-          <span class="text-xs sm:text-sm font-semibold text-white text-center">Kubernetes</span>
+          <span class="text-xs sm:text-sm font-semibold text-primary text-center">Kubernetes</span>
         </div>
 
-        <!-- Terraform -->
-        <div class="reveal reveal-delay-4 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-white/10 bg-navy-mid hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+        <div class="reveal reveal-delay-4 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-subtle/50 bg-card hover:border-emerald/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald/10">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg" alt="Terraform" class="w-12 h-12 sm:w-14 sm:h-14">
-          <span class="text-xs sm:text-sm font-semibold text-white text-center">Terraform</span>
+          <span class="text-xs sm:text-sm font-semibold text-primary text-center">Terraform</span>
         </div>
 
-        <!-- PostgreSQL -->
-        <div class="reveal reveal-delay-5 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-white/10 bg-navy-mid hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5">
+        <div class="reveal reveal-delay-5 group flex flex-col items-center gap-3 p-5 sm:p-6 rounded-2xl border border-subtle/50 bg-card hover:border-emerald/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald/10">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="w-12 h-12 sm:w-14 sm:h-14">
-          <span class="text-xs sm:text-sm font-semibold text-white text-center">PostgreSQL</span>
+          <span class="text-xs sm:text-sm font-semibold text-primary text-center">PostgreSQL</span>
         </div>
 
       </div>
@@ -423,70 +416,57 @@
   <!-- ================================================================
        WHY MONTREBO
        ================================================================ -->
-  <section id="about" class="py-24 sm:py-32 bg-navy relative overflow-hidden">
+  <section id="about" class="py-24 sm:py-32 bg-navy-light relative overflow-hidden">
     <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-accent/[0.04] rounded-full blur-[150px]"></div>
     <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-emerald/[0.04] rounded-full blur-[150px]"></div>
-
-    <!-- Decorative floating four-leaf clover -->
-    <div class="absolute left-[5%] bottom-[10%] opacity-[0.03] float-delay hidden lg:block">
-      <svg class="w-48 h-48" viewBox="0 0 64 64" fill="none">
-        <circle cx="32" cy="18" r="11" fill="#10B981"/>
-        <circle cx="46" cy="32" r="11" fill="#10B981"/>
-        <circle cx="32" cy="46" r="11" fill="#10B981"/>
-        <circle cx="18" cy="32" r="11" fill="#10B981"/>
-        <circle cx="32" cy="32" r="5" fill="#10B981"/>
-      </svg>
-    </div>
 
     <div class="relative max-w-7xl mx-auto px-5 sm:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
         <p class="reveal text-sm font-semibold tracking-widest uppercase text-emerald mb-4" data-i18n="about.label">Why Us</p>
         <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-6" data-i18n="about.title">Built for Engineering Excellence</h2>
-        <p class="reveal reveal-delay-2 text-lg text-slate-400 leading-relaxed" data-i18n="about.subtitle">We don't just write code. We architect solutions that drive revenue, reduce operational costs, and position your technology as a lasting competitive advantage.</p>
+        <p class="reveal reveal-delay-2 text-lg text-secondary leading-relaxed" data-i18n="about.subtitle">We don't just write code. We architect solutions that drive revenue, reduce operational costs, and position your technology as a lasting competitive advantage.</p>
       </div>
 
-      <!-- Stats -->
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mb-20">
-        <div class="reveal glass rounded-2xl p-8 text-center hover:-translate-y-1 transition-transform duration-300">
-          <div class="text-4xl sm:text-5xl font-extrabold gradient-text mb-3">50+</div>
-          <p class="text-sm font-medium text-slate-400" data-i18n="about.stat1">Projects Delivered</p>
+        <div class="reveal stat-card bg-card border border-subtle/40 rounded-2xl p-10 text-center hover:-translate-y-2 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/5 transition-all duration-300">
+          <div class="text-5xl sm:text-6xl lg:text-7xl font-black gradient-text mb-4 leading-none">50+</div>
+          <p class="text-sm font-semibold text-secondary uppercase tracking-wider" data-i18n="about.stat1">Projects Delivered</p>
         </div>
-        <div class="reveal reveal-delay-1 glass rounded-2xl p-8 text-center hover:-translate-y-1 transition-transform duration-300">
-          <div class="text-4xl sm:text-5xl font-extrabold gradient-text mb-3">10+</div>
-          <p class="text-sm font-medium text-slate-400" data-i18n="about.stat2">Years of Delivery</p>
+        <div class="reveal reveal-delay-1 stat-card bg-card border border-subtle/40 rounded-2xl p-10 text-center hover:-translate-y-2 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/5 transition-all duration-300">
+          <div class="text-5xl sm:text-6xl lg:text-7xl font-black gradient-text mb-4 leading-none">10+</div>
+          <p class="text-sm font-semibold text-secondary uppercase tracking-wider" data-i18n="about.stat2">Years of Delivery</p>
         </div>
-        <div class="reveal reveal-delay-2 glass rounded-2xl p-8 text-center hover:-translate-y-1 transition-transform duration-300">
-          <div class="text-4xl sm:text-5xl font-extrabold gradient-text-emerald mb-3">99.9%</div>
-          <p class="text-sm font-medium text-slate-400" data-i18n="about.stat3">Uptime SLA Achieved</p>
+        <div class="reveal reveal-delay-2 stat-card bg-card border border-subtle/40 rounded-2xl p-10 text-center hover:-translate-y-2 hover:border-emerald/30 hover:shadow-xl hover:shadow-emerald/5 transition-all duration-300">
+          <div class="text-5xl sm:text-6xl lg:text-7xl font-black gradient-text-emerald mb-4 leading-none">99.9%</div>
+          <p class="text-sm font-semibold text-secondary uppercase tracking-wider" data-i18n="about.stat3">Uptime SLA Achieved</p>
         </div>
-        <div class="reveal reveal-delay-3 glass rounded-2xl p-8 text-center hover:-translate-y-1 transition-transform duration-300">
-          <div class="text-4xl sm:text-5xl font-extrabold gradient-text mb-3">30+</div>
-          <p class="text-sm font-medium text-slate-400" data-i18n="about.stat4">Enterprise Clients</p>
+        <div class="reveal reveal-delay-3 stat-card bg-card border border-subtle/40 rounded-2xl p-10 text-center hover:-translate-y-2 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/5 transition-all duration-300">
+          <div class="text-5xl sm:text-6xl lg:text-7xl font-black gradient-text mb-4 leading-none">30+</div>
+          <p class="text-sm font-semibold text-secondary uppercase tracking-wider" data-i18n="about.stat4">Enterprise Clients</p>
         </div>
       </div>
 
-      <!-- Values -->
       <div class="grid md:grid-cols-3 gap-8 sm:gap-10">
         <div class="reveal">
           <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
             <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-3" data-i18n="about.v1.title">Clean Code, Always</h3>
-          <p class="text-slate-400 leading-relaxed text-[15px]" data-i18n="about.v1.desc">Every line we write is tested, reviewed, and documented. We build systems designed for the engineers who come after us -- because maintainability is not optional, it's foundational.</p>
+          <p class="text-secondary leading-relaxed text-[15px]" data-i18n="about.v1.desc">Every line we write is tested, reviewed, and documented. We build systems designed for the engineers who come after us -- because maintainability is not optional, it's foundational.</p>
         </div>
         <div class="reveal reveal-delay-1">
           <div class="w-12 h-12 rounded-xl bg-emerald/10 flex items-center justify-center mb-5">
             <svg class="w-6 h-6 text-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-3" data-i18n="about.v2.title">Honest Communication</h3>
-          <p class="text-slate-400 leading-relaxed text-[15px]" data-i18n="about.v2.desc">No vanity metrics, no sugar-coating. We give you direct, technical feedback and transparent timelines. If something won't work, you'll hear it from us first.</p>
+          <p class="text-secondary leading-relaxed text-[15px]" data-i18n="about.v2.desc">No vanity metrics, no sugar-coating. We give you direct, technical feedback and transparent timelines. If something won't work, you'll hear it from us first.</p>
         </div>
         <div class="reveal reveal-delay-2">
           <div class="w-12 h-12 rounded-xl bg-indigo/10 flex items-center justify-center mb-5">
             <svg class="w-6 h-6 text-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/></svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-3" data-i18n="about.v3.title">Long-Term Partnership</h3>
-          <p class="text-slate-400 leading-relaxed text-[15px]" data-i18n="about.v3.desc">We measure success by the value we create over years, not sprints. Most of our clients become long-term partners because we treat their technology as if it were our own.</p>
+          <p class="text-secondary leading-relaxed text-[15px]" data-i18n="about.v3.desc">We measure success by the value we create over years, not sprints. Most of our clients become long-term partners because we treat their technology as if it were our own.</p>
         </div>
       </div>
     </div>
@@ -501,11 +481,11 @@
       <div class="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
         <p class="reveal text-sm font-semibold tracking-widest uppercase text-emerald mb-4" data-i18n="products.label">Our Products</p>
         <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-5" data-i18n="products.title">Built by Us, Used by Teams Worldwide</h2>
-        <p class="reveal reveal-delay-2 text-lg text-slate-400 leading-relaxed" data-i18n="products.subtitle">Beyond consulting, we build our own products. Real tools born from real engineering challenges.</p>
+        <p class="reveal reveal-delay-2 text-lg text-secondary leading-relaxed" data-i18n="products.subtitle">Beyond consulting, we build our own products. Real tools born from real engineering challenges.</p>
       </div>
 
       <div class="max-w-3xl mx-auto">
-        <a href="https://horusqa.ai" target="_blank" rel="noopener" class="reveal group block glass rounded-2xl p-8 sm:p-10 hover:border-emerald/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald/5">
+        <a href="https://horusqa.ai" target="_blank" rel="noopener" class="reveal group block bg-card border border-subtle/50 rounded-2xl p-8 sm:p-10 hover:border-emerald/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald/10">
           <div class="flex flex-col sm:flex-row items-start gap-6">
             <img src="horusqa-logo.png" alt="HorusQA" class="w-14 h-14 rounded-xl flex-shrink-0">
             <div class="flex-1">
@@ -513,7 +493,7 @@
                 <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-emerald transition-colors">HorusQA</h3>
                 <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald/10 text-emerald border border-emerald/20" data-i18n="products.horus.badge">SaaS</span>
               </div>
-              <p class="text-slate-400 leading-relaxed mb-4" data-i18n="products.horus.desc">No-code automated QA testing platform. Record browser interactions with a Chrome extension, replay them with Playwright, and get instant reports with screenshots and video. No coding required.</p>
+              <p class="text-secondary leading-relaxed mb-4" data-i18n="products.horus.desc">No-code automated QA testing platform. Record browser interactions with a Chrome extension, replay them with Playwright, and get instant reports with screenshots and video. No coding required.</p>
               <span class="inline-flex items-center gap-2 text-sm font-semibold text-emerald group-hover:gap-3 transition-all">
                 <span data-i18n="products.horus.cta">Visit horusqa.ai</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
@@ -529,19 +509,18 @@
   <!-- ================================================================
        CONTACT
        ================================================================ -->
-  <section id="contact" class="py-24 sm:py-32 bg-surface">
+  <section id="contact" class="py-24 sm:py-32 bg-navy-light">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
         <p class="reveal text-sm font-semibold tracking-widest uppercase text-accent mb-4" data-i18n="contact.label">Contact</p>
-        <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-heading tracking-tight mb-5" data-i18n="contact.title">Let's Build Something Together</h2>
-        <p class="reveal reveal-delay-2 text-lg text-muted leading-relaxed" data-i18n="contact.subtitle">Tell us about your challenge. We'll respond within 24 hours with an honest assessment of how we can help.</p>
+        <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-5" data-i18n="contact.title">Let's Build Something Together</h2>
+        <p class="reveal reveal-delay-2 text-lg text-secondary leading-relaxed" data-i18n="contact.subtitle">Tell us about your challenge. We'll respond within 24 hours with an honest assessment of how we can help.</p>
       </div>
 
       <div class="grid lg:grid-cols-5 gap-12 lg:gap-16">
-        <!-- Contact Info -->
         <div class="lg:col-span-2 reveal">
-          <h3 class="text-xl font-bold text-heading mb-6" data-i18n="contact.info.title">Start the Conversation</h3>
-          <p class="text-muted leading-relaxed mb-8" data-i18n="contact.info.desc">Whether you need a full engineering team or a second opinion on your architecture, we're here to help. No commitment, no sales pitch -- just a technical conversation about your goals.</p>
+          <h3 class="text-xl font-bold text-white mb-6" data-i18n="contact.info.title">Start the Conversation</h3>
+          <p class="text-secondary leading-relaxed mb-8" data-i18n="contact.info.desc">Whether you need a full engineering team or a second opinion on your architecture, we're here to help. No commitment, no sales pitch -- just a technical conversation about your goals.</p>
 
           <div class="space-y-5">
             <div class="flex items-center gap-4">
@@ -549,8 +528,8 @@
                 <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
               </div>
               <div>
-                <p class="text-sm text-muted" data-i18n="contact.info.email.label">Email</p>
-                <p class="font-semibold text-heading">hello@montrebo.com</p>
+                <p class="text-sm text-secondary" data-i18n="contact.info.email.label">Email</p>
+                <p class="font-semibold text-white">hello@montrebo.com</p>
               </div>
             </div>
             <div class="flex items-center gap-4">
@@ -558,8 +537,8 @@
                 <svg class="w-5 h-5 text-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </div>
               <div>
-                <p class="text-sm text-muted" data-i18n="contact.info.location.label">Location</p>
-                <p class="font-semibold text-heading" data-i18n="contact.info.location.value">Remote-first, worldwide</p>
+                <p class="text-sm text-secondary" data-i18n="contact.info.location.label">Location</p>
+                <p class="font-semibold text-white" data-i18n="contact.info.location.value">Remote-first, worldwide</p>
               </div>
             </div>
             <div class="flex items-center gap-4">
@@ -567,36 +546,35 @@
                 <svg class="w-5 h-5 text-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </div>
               <div>
-                <p class="text-sm text-muted" data-i18n="contact.info.response.label">Response Time</p>
-                <p class="font-semibold text-heading" data-i18n="contact.info.response.value">Within 24 hours</p>
+                <p class="text-sm text-secondary" data-i18n="contact.info.response.label">Response Time</p>
+                <p class="font-semibold text-white" data-i18n="contact.info.response.value">Within 24 hours</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Form -->
         <div class="lg:col-span-3 reveal reveal-delay-1">
-          <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="bg-white rounded-2xl p-8 sm:p-10 border border-border shadow-sm">
+          <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="bg-card rounded-2xl p-8 sm:p-10 border border-subtle/50">
             <input type="hidden" name="access_key" value="44274b3a-b8b2-4d4a-834c-dd93b6a7cbe1">
             <input type="hidden" name="subject" value="New contact from Montrebo website">
             <input type="hidden" name="redirect" value="https://montrebo.com">
             <div class="grid sm:grid-cols-2 gap-5 mb-5">
               <div>
-                <label class="block text-sm font-medium text-heading mb-2" data-i18n="contact.form.name">Full Name</label>
-                <input type="text" name="name" required class="w-full px-4 py-3.5 rounded-xl border border-border bg-surface text-heading placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all duration-200" data-i18n-placeholder="contact.form.name.ph" placeholder="John Smith">
+                <label class="block text-sm font-medium text-primary mb-2" data-i18n="contact.form.name">Full Name</label>
+                <input type="text" name="name" required class="w-full px-4 py-3.5 rounded-xl input-dark text-sm transition-all duration-200" data-i18n-placeholder="contact.form.name.ph" placeholder="John Smith">
               </div>
               <div>
-                <label class="block text-sm font-medium text-heading mb-2" data-i18n="contact.form.email">Work Email</label>
-                <input type="email" name="email" required class="w-full px-4 py-3.5 rounded-xl border border-border bg-surface text-heading placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all duration-200" data-i18n-placeholder="contact.form.email.ph" placeholder="john@company.com">
+                <label class="block text-sm font-medium text-primary mb-2" data-i18n="contact.form.email">Work Email</label>
+                <input type="email" name="email" required class="w-full px-4 py-3.5 rounded-xl input-dark text-sm transition-all duration-200" data-i18n-placeholder="contact.form.email.ph" placeholder="john@company.com">
               </div>
             </div>
             <div class="mb-5">
-              <label class="block text-sm font-medium text-heading mb-2" data-i18n="contact.form.company">Company</label>
-              <input type="text" name="company" class="w-full px-4 py-3.5 rounded-xl border border-border bg-surface text-heading placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all duration-200" data-i18n-placeholder="contact.form.company.ph" placeholder="Your company name">
+              <label class="block text-sm font-medium text-primary mb-2" data-i18n="contact.form.company">Company</label>
+              <input type="text" name="company" class="w-full px-4 py-3.5 rounded-xl input-dark text-sm transition-all duration-200" data-i18n-placeholder="contact.form.company.ph" placeholder="Your company name">
             </div>
             <div class="mb-5">
-              <label class="block text-sm font-medium text-heading mb-2" data-i18n="contact.form.service">How Can We Help?</label>
-              <select name="service" required class="w-full px-4 py-3.5 rounded-xl border border-border bg-surface text-heading text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all duration-200 appearance-none" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 20 20%22 fill=%22%2364748B%22><path fill-rule=%22evenodd%22 d=%22M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z%22 clip-rule=%22evenodd%22/></svg>');background-position:right 1rem center;background-repeat:no-repeat;background-size:1.25rem;">
+              <label class="block text-sm font-medium text-primary mb-2" data-i18n="contact.form.service">How Can We Help?</label>
+              <select name="service" required class="w-full px-4 py-3.5 rounded-xl input-dark select-dark text-sm transition-all duration-200 appearance-none">
                 <option value="" disabled selected data-i18n="contact.form.service.ph">Select a service area...</option>
                 <option value="software"      data-i18n="contact.form.service.o1">Custom Software Development</option>
                 <option value="devops"        data-i18n="contact.form.service.o2">Cloud & DevOps</option>
@@ -608,22 +586,21 @@
               </select>
             </div>
             <div class="mb-8">
-              <label class="block text-sm font-medium text-heading mb-2" data-i18n="contact.form.message">Project Details</label>
-              <textarea name="message" rows="5" required class="w-full px-4 py-3.5 rounded-xl border border-border bg-surface text-heading placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all duration-200 resize-none" data-i18n-placeholder="contact.form.message.ph" placeholder="Tell us about your project, timeline, and any technical requirements..."></textarea>
+              <label class="block text-sm font-medium text-primary mb-2" data-i18n="contact.form.message">Project Details</label>
+              <textarea name="message" rows="5" required class="w-full px-4 py-3.5 rounded-xl input-dark text-sm transition-all duration-200 resize-none" data-i18n-placeholder="contact.form.message.ph" placeholder="Tell us about your project, timeline, and any technical requirements..."></textarea>
             </div>
-            <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 bg-accent hover:bg-accent-dark text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-0.5 text-base" data-i18n="contact.form.submit">
+            <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 bg-accent hover:bg-accent-dark text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-accent/25 hover:-translate-y-0.5 text-base" data-i18n="contact.form.submit">
               Send Message
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </button>
           </form>
 
-          <!-- Success State -->
-          <div id="formSuccess" class="hidden bg-white rounded-2xl p-12 border border-border shadow-sm text-center">
+          <div id="formSuccess" class="hidden bg-card rounded-2xl p-12 border border-subtle/50 text-center">
             <div class="w-16 h-16 rounded-full bg-emerald/10 flex items-center justify-center mx-auto mb-6">
               <svg class="w-8 h-8 text-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <h3 class="text-2xl font-bold text-heading mb-3" data-i18n="contact.success.title">Message Sent Successfully</h3>
-            <p class="text-muted" data-i18n="contact.success.desc">Thank you for reaching out. A member of our team will get back to you within 24 hours.</p>
+            <h3 class="text-2xl font-bold text-white mb-3" data-i18n="contact.success.title">Message Sent Successfully</h3>
+            <p class="text-secondary" data-i18n="contact.success.desc">Thank you for reaching out. A member of our team will get back to you within 24 hours.</p>
           </div>
         </div>
       </div>
@@ -634,19 +611,17 @@
   <!-- ================================================================
        FOOTER
        ================================================================ -->
-  <footer class="bg-navy border-t border-white/5">
+  <footer class="bg-navy border-t border-subtle/30">
     <div class="max-w-7xl mx-auto px-5 sm:px-8 py-16">
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-        <!-- Brand -->
         <div class="sm:col-span-2 lg:col-span-1">
           <a href="#" class="inline-flex items-center gap-3 mb-5">
             <img src="logo.png" alt="Montrebo" class="w-8 h-8 flex-shrink-0 object-contain">
-            <span class="text-xl font-extrabold tracking-tight"><span class="text-white">Montre</span><span class="gradient-text">bo</span></span>
+            <span class="text-xl font-extrabold tracking-tight"><span class="text-white">Mon</span><span class="text-emerald">trebo</span></span>
           </a>
           <p class="text-sm text-slate-500 leading-relaxed max-w-xs" data-i18n="footer.tagline">Enterprise technology consulting. Engineering the systems that power your growth.</p>
         </div>
 
-        <!-- Services -->
         <div>
           <h4 class="text-sm font-semibold text-white mb-4" data-i18n="footer.services">Services</h4>
           <ul class="space-y-2.5">
@@ -657,7 +632,6 @@
           </ul>
         </div>
 
-        <!-- Company -->
         <div>
           <h4 class="text-sm font-semibold text-white mb-4" data-i18n="footer.company">Company</h4>
           <ul class="space-y-2.5">
@@ -669,7 +643,6 @@
           </ul>
         </div>
 
-        <!-- Contact -->
         <div>
           <h4 class="text-sm font-semibold text-white mb-4" data-i18n="nav.contact">Contact</h4>
           <ul class="space-y-2.5">
@@ -679,7 +652,7 @@
         </div>
       </div>
 
-      <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="border-t border-subtle/30 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p class="text-sm text-slate-600">&copy; 2026 Montrebo. <span data-i18n="footer.rights">All rights reserved.</span></p>
         <div class="flex items-center gap-6">
           <a href="#" class="text-sm text-slate-600 hover:text-slate-400 transition-colors" data-i18n="footer.privacy">Privacy Policy</a>
@@ -694,9 +667,6 @@
        JAVASCRIPT
        ================================================================ -->
   <script>
-  /* -----------------------------------------------------------------
-     i18n — Full translation dictionary (EN, ES, PT, FR, DE)
-     ----------------------------------------------------------------- */
   const translations = {
     en: {
       "nav.services":"Services","nav.technologies":"Technologies","nav.about":"About","nav.contact":"Contact","nav.cta":"Get in Touch",
@@ -920,9 +890,6 @@
     },
   };
 
-  /* -----------------------------------------------------------------
-     i18n — Apply translations
-     ----------------------------------------------------------------- */
   let currentLanguage = 'en';
 
   function setLang(lang) {
@@ -942,9 +909,6 @@
     localStorage.setItem('montrebo-lang', lang);
   }
 
-  /* -----------------------------------------------------------------
-     Navigation — scroll state + mobile menu
-     ----------------------------------------------------------------- */
   const navbar = document.getElementById('navbar');
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -965,9 +929,6 @@
     });
   });
 
-  /* -----------------------------------------------------------------
-     Smooth scroll with nav offset
-     ----------------------------------------------------------------- */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
       const href = anchor.getAttribute('href');
@@ -980,9 +941,6 @@
     });
   });
 
-  /* -----------------------------------------------------------------
-     Scroll reveal (Intersection Observer)
-     ----------------------------------------------------------------- */
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -991,9 +949,6 @@
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  /* -----------------------------------------------------------------
-     Contact form
-     ----------------------------------------------------------------- */
   document.getElementById('contactForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -1018,9 +973,6 @@
     }
   });
 
-  /* -----------------------------------------------------------------
-     Init — restore saved language
-     ----------------------------------------------------------------- */
   const savedLang = localStorage.getItem('montrebo-lang');
   if (savedLang && translations[savedLang]) setLang(savedLang);
   </script>
